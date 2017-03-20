@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Edit Profile GetMeSafe</title>
+		<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+		<link rel="stylesheet" type="text/css" href="./stylesheets/bootstrap/css/bootstrap-theme.css">
+		<link rel="stylesheet" type="text/css" href="./stylesheets/bootstrap/css/bootstrap.css">
+		<script src="https://use.fontawesome.com/57a2949668.js"></script>
+		<link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
+		<script src ="./scripts/edit-profile.js"></script>
+	</head>
+	<body>
+		<nav class='top-nav'>
+			<ul class = "nav-list col-xs-12">
+				<li><img class = "logo" src="logo.png"></li>
+				<li class= "home-link"><a href="index.html">Home</a></li>
+			</ul>
+		</nav>
+
+
+		<div class = "profile-form-container">
+				<script id="emergency-contact-template" type="text/x-handlebars-template">
+					<h1>Emergency Contact</h1>
+					<h2>{{firstname}}</h2>
+					<h2>{{lastname}}</h2>
+					<h2>{{phone}}</h2>
+					<h2>{{email}}</h2>
+					<div class = "emergency-contact-button-container">
+						<button class = "edit-contact-button-{{id}}"><a href="edit-contact.html?id={{id}}"">Edit A Contact</a></button>
+						<button class = "delete-contact-button delete-contact-button-{{id}}" data-id = {{id}}><a href="edit-contact.html?id={{id}}">Delete a Contact</a></button>
+
+					</div>
+					<br>
+
+
+				</script>
+		</div>
+
+		<div class="emergency-contacts-placeholder"></div>
+
+
+
+
+
+
+		<div class = "profile-submit-button-container col-xs-10">
+			<button class = "profile-submit-button col-xs-10">Submit</button>
+		</div>
+	</div>
+</body>
+</html>
