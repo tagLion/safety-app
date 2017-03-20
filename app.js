@@ -9,9 +9,19 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var stormpath = require('express-stormpath');
 var app = express();
-var PORT = process.env.PORT || 3000
+var corsOptions = {
+  origin: 'https://api.stormpath.com',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
 require('dotenv').config()
+var PORT = process.env.PORT || 3000
+app.use(cors(corsOptions))
 app.use(stormpath.init(app, {
+  postLogoutHandler: function (account, req, res, next) {
+    console.log('User', account.email, 'just logged out!');
+    res.redirect('/')
+  },
   client: {
     apiKey: {
       id: process.env.APIID,
@@ -21,12 +31,18 @@ app.use(stormpath.init(app, {
   application: {
     href: process.env.APPURL
   },
-  web: {
-    login: {
+web: {
+idSite: {
+enabled: true,
+uri: '/idSiteResult', // default setting
+nextUri: '/'
+},
+logout: {
       enabled: true,
-      nextUri: "/test.html"
+      uri: '/logout',
+      nextUri: '/'
     }
-  }
+}
 }));
 
 // view engine setup
