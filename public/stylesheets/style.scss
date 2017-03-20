@@ -2,6 +2,10 @@
 /* read this about this box-sizing thingy 
 https://css-tricks.com/box-sizing/*/
 
+
+$nav-height: 20vh;
+
+//colors
 $background-color: #f0f0f5;
 $emergency-color: red;
 $login-color : orange;
@@ -10,11 +14,18 @@ body{
 	background-color: $background-color;
 	background-size: cover;
 }
+nav{
+	height: $nav-height;
+	display: flex;
+}
+.logo{
+	height: $nav-height;
+}
 .get-me-safe-button-container{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-height: 80vh;
+	min-height: 60vh;
 }
 .get-me-safe-button{
 	cursor: pointer;

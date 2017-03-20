@@ -5,11 +5,18 @@ body {
   background-color: #f0f0f5;
   background-size: cover; }
 
+nav {
+  height: 20vh;
+  display: flex; }
+
+.logo {
+  height: 20vh; }
+
 .get-me-safe-button-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80vh; }
+  min-height: 60vh; }
 
 .get-me-safe-button {
   cursor: pointer; }
