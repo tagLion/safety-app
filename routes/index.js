@@ -5,8 +5,8 @@ var knex = require('../db/knex.js')
 
 var stormpath = require('express-stormpath');
 /* GET home page. */
-router.get('/', stormpath.loginRequired, function(req, res, next) {
-  res.send('testing')
+router.get('/', function(req, res, next) {
+  res.sendFile('../public/index.html')
 });
 router.get('/isloggedin', stormpath.getUser, (req, res) =>{
     if(req.user){
