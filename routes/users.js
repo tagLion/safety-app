@@ -61,7 +61,7 @@ router.patch('/updatecontact', (req, res) => {
   // var patchUserID = req.body.user_id
   var patchContactID = req.body.id
 
-  knex('eContact').where('id', patchContactID).update({ firstname:newFirstName, lastname:newLastName, phone:newPhone, email:newEmail})
+  knex('eContact').where('id', patchContactID).update({ firstname:patchFirstName, lastname:patchLastName, phone:patchPhone, email:patchEmail})
     .then(result => {
       res.send(200)
     })
