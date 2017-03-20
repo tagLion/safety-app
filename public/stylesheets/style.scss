@@ -1,3 +1,39 @@
 @import url("reset.css");
 /* read this about this box-sizing thingy 
 https://css-tricks.com/box-sizing/*/
+
+$background-color: #f0f0f5;
+$emergency-color: red;
+$login-color : orange;
+$about-us-color: grey;
+body{
+	background-color: $background-color;
+	background-size: cover;
+}
+.get-me-safe-button-container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 80vh;
+}
+.get-me-safe-button{
+	cursor: pointer;
+}
+.login-button{
+	height: 10vh;
+	font-size: calc(20px + 1vw);
+	font-family: 'Libre Baskerville', serif;
+	background-color: $login-color;
+	color: white;
+	text-shadow: black 1px 1px 1px;
+
+}
+
+.about-button{
+	height: 10vh;
+	font-size: calc(20px + 1vw);
+	font-family: 'Libre Baskerville', serif;
+	background-color: $about-us-color;
+	color: white;
+	text-shadow: black 1px 1px 1px;
+}

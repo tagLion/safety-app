@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<title>GetMeSafe</title>
+		<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
 		<link rel="stylesheet" type="text/css" href="./stylesheets/bootstrap/css/bootstrap-theme.css">
@@ -13,26 +14,15 @@
 	<body>
 		<nav class='top-nav'>
 			<ul class = "nav-list">
-				<div class = 'nav-item logo'><a href="./index.html">GetMeSafe</a></div>
-			
+				<li>GetMeSafeLogoPlaceholder</li>
 			</ul>
 		</nav>
-		
-		<script id="all-recipes-template" type="text/x-handlebars-template">
-		<div class = "all-recipes-container">
-				<div class="single-recipe-container">
-					<h3><a href="/single-recipe.html?id={{id}}">Title: {{title}}</a></h3>
-					<h4>User Id: {{user_id}}</h4>
-					<div class="body">{{body}}</div>
-					<div class = "recipe-image-container">
-					<div class = "recipe-image" style="background-image: url({{image}})"
-					</div>
-					</div>
-				</div>
+		<div class = "get-me-safe-button-container col-xs-12">
+			<img class = "get-me-safe-button" src="logo.png">
 		</div>
-		</script>
-		<div class="recipes-placeholder"></div>
-
-	</footer>
-</body>
+		<footer>
+			<a href="#"><button class = "login-button col-xs-12">Login </button></a>
+			<a href="#"><button class = "about-button col-xs-12">About Us</button></a>
+		</footer>
+	</body>
 </html>
