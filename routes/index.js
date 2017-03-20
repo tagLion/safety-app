@@ -5,9 +5,14 @@ var path = require('path')
 var stormpath = require('express-stormpath');
 /* GET home page. */
 router.get('/', stormpath.loginRequired, function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.send('testing')
 });
-router.get('/test', stormpath.loginRequired, (req, res) =>{
-  res.sendFile(path.join(__dirname + './public/test.html'))
+router.get('/isloggedin', stormpath.getUser, (req, res) =>{
+  if(req.user){
+  // res.send(res.locals.user.email)
+  res.send(req.user)
+}else {
+  res.send(false)
+}
 })
 module.exports = router;
