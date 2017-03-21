@@ -4,7 +4,7 @@ $('#send').click(function(e){
     phone: $('#phone').val()
   })
   .then(function(data){
-    window.location = '/'
+    window.location = '/econtacts.html'
   })
   .catch(function(err){
     console.log(err)
