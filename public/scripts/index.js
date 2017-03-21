@@ -3,7 +3,7 @@ $(document).ready(function(){
   .then(function(data){
     console.log(data)
     if (data != false){
-      $.get('users/myid')
+      $.get('/users/myid')
       .then(function(data){
         console.log(data)
         if (data.length < 1){
