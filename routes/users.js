@@ -14,7 +14,7 @@ router.post('/', stormpath.loginRequired, (req, res)=>{
     res.send(data)
   })
 })
-router.get('/myid', stormpath.loginRequired, (req, res)=>{
+router.get('/myid', stormpath.getUser, (req, res)=>{
   var email = res.locals.user.email
   knex('user').select('id').where('email', res.locals.user.email)
   .then(function(data){
