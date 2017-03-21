@@ -51,28 +51,29 @@ $(document).ready(function() {
 				var html = template(element)
 				$('.emergency-contacts-placeholder').append(html)
 			})
+			$(".delete-contact-button").on("click", function(){
+				console.log("alsdkfjsa;")
+				console.log("datatatatddaddatdadtadatdat")
+				var contactIdToDelete = $(this).data('id');
+				console.log("contactIdToDelete is: " + contactIdToDelete)
+
+				$.ajax({
+					url: 'users/removecontact/'+contactIdToDelete,
+					type: 'DELETE',
+					success: function(result){
+						location.reload(true)
+					}
+
+				})
+			})
+
 		})
 	})
 })
 
 
-// $(".delete-contact-button").on("click", function(){
-// 	console.log("alsdkfjsa;")
-// 	console.log("datatatatddaddatdadtadatdat")
-// 	var contactIdToDelete = $(this).data('id');
-// 	console.log("contactIdToDelete is: " + contactIdToDelete)
 
-// 	$.ajax({
-// 		url: '/econtact/'+contactIdToDelete,
-// 		type: 'DELETE',
-// 		success: function(result){
-// 			location.reload(true)
-// 		}
 
-// 	})
-// })
-
-//
 // });
 
 // $.get('/users/econtactbyuser/' +num)
