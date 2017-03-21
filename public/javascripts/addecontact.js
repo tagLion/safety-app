@@ -19,6 +19,6 @@ $('#send').click(function(e){
   $.post('users/newecontact', econtobj)
   .then(function(data){
     console.log(data)
-
+    window.location = '/econtact.html'
   })
 })
