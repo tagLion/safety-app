@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Edit Profile GetMeSafe</title>
+		<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+		<link rel="stylesheet" type="text/css" href="./stylesheets/bootstrap/css/bootstrap-theme.css">
+		<link rel="stylesheet" type="text/css" href="./stylesheets/bootstrap/css/bootstrap.css">
+		<script src="https://use.fontawesome.com/57a2949668.js"></script>
+		<link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
+		<script src ="./scripts/new-user-profile.js"></script>
+	</head>
+	<body>
+			<nav class='top-nav'>
+			<ul class = "nav-list col-xs-12">
+				<li><img class = "logo" src="logo.png"></li>
+				<li class= "home-link"><a href="index.html">Home</a></li>
+			</ul>
+		</nav>
+		<div class = "profile-form-container">
+	<!-- 		<div class = "user-form-container col-xs-10">
+				<h1>Your Info</h1>
+				<input type="text" placeholder="Your First Name" name="user-first-name" class = "col-xs-10">
+				<input type="text" placeholder="Your Last Name" name="user-last-name" class = "col-xs-10">
+				<input type="text" placeholder="Your Email" name="user-email" class = "col-xs-10">
+				<input type="text" placeholder="Your Phone Number" name="user-phone" class = "col-xs-10">
+			</div> -->
+			<div class = "emergency-contact-form-container col-xs-10">
+				<h1>Emergency Contact 1</h1>
+				<input type="text" placeholder="Emergency Contact First Name" name="contact-first-name" class = "col-xs-10">
+				<input type="text" placeholder="Emergency Contact Last Name" name="contact-last-name" class = "col-xs-10"><input type="text" placeholder="Emergency Contact Email" name="contact-email" class = "col-xs-10"><input type="text" placeholder="Emergency Contact Phone Number" name="contact-phone" class = "col-xs-10">
+				<div class = "add-contact-button-container col-xs-10">
+	<!-- 			<button class = "delete-contact-button col-xs-4">
+					<i class="fa fa-trash-o" aria-hidden="true"></i>
+
+				</button> -->
+				<button class = "add-contact-button col-xs-4">
+					<i class="fa fa-plus-circle" aria-hidden="true"></i>
+				</button>
+				</div>
+			</div>
+			<div class = "profile-submit-button-container col-xs-10">
+				<button class = "profile-submit-button col-xs-10">Submit</button>
+			</div>
+		</div>
+	</body>
+</html>

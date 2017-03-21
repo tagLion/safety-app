@@ -9,6 +9,14 @@ body {
 nav {
   height: 20vh;
   display: flex; }
+  nav ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+
+.home-link {
+  background-color: red;
+  font-size: calc(18px + 1vw); }
 
 .logo {
   height: 20vh; }
@@ -44,6 +52,57 @@ nav {
   background-color: grey;
   color: white;
   text-shadow: black 1px 1px 1px; }
+
+.user-form-container input, .emergency-contact-form-container input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: calc(14px + 1vw); }
+
+.profile-form-container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .profile-form-container h1 {
+    font-size: calc(20px + 1vw);
+    color: white;
+    text-shadow: black 1px 1px 1px; }
+
+.user-form-container {
+  background-color: yellow;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px; }
+
+.emergency-contact-form-container {
+  background-color: green;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center; }
+
+.add-contact-button-container {
+  display: flex;
+  justify-content: flex-end;
+  font-size: calc(20px + 1vw); }
+
+.profile-submit-button-container {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  height: 10vh; }
+
+.profile-submit-button {
+  background-color: orange;
+  font-size: calc(20px + 1vw); }
+
+.edit-contact-button-container {
+  display: flex;
+  justify-content: flex-end;
+  font-size: calc(20px + 1vw); }
+
   
 .contacts-button {
   height: 10vh;
