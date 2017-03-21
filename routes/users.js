@@ -1,6 +1,27 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex.js')
+const stormpath = require('express-stormpath')
+
+
+router.post('/', stormpath.loginRequired, (req, res)=>{
+  console.log(res.locals.user.email)
+  req.body.firstname = res.locals.user.givenName
+  req.body.lastname = res.locals.user.surName
+  req.body.email = res.locals.user.email
+  knex('user').insert(req.body)
+  .then(data =>{
+    res.send(data)
+  })
+})
+router.get('/myid', stormpath.loginRequired, (req, res)=>{
+  var email = res.locals.user.email
+  knex('user').select('id').where('email', res.locals.user.email)
+  .then(function(data){
+    console.log(data)
+    res.send(data)
+  })
+})
 
 router.get('/primary', (req, res) => {
   knex('user')
@@ -40,18 +61,29 @@ router.get('/econtacts/:id', (req, res) => {
     })
 })
 
-router.post('/newecontact', (req, res) => {
-  var newFirstName = req.body.firstname
-  var newLastName = req.body.lastname
-  var newPhone = req.body.phone
-  var newEmail = req.body.email
-  var newUserID = req.body.user_id
+router.post('/newecontact', stormpath.loginRequired, (req, res) => {
+  console.log(res.locals.user.email)
+  knex('user').select('id').where('email', res.locals.user.email)
+  .then(function(data){
+    console.log(data)
+    req.body.user_id = data[0].id
+    if (req.body.user_id == data[0].id){
+      var newFirstName = req.body.firstname
+      var newLastName = req.body.lastname
+      var newPhone = req.body.phone
+      var newEmail = req.body.email
+      var newUserID = req.body.user_id
 
-  knex('eContact').insert({user_id:newUserID, firstname:newFirstName, lastname:newLastName, phone:newPhone, email:newEmail}).returning(['id', 'user_id', 'firstname', 'lastname', 'phone', 'email'])
-    .then(addedUser => {
-      res.send(addedUser)
-    })
-})
+      knex('eContact').insert({user_id:newUserID, firstname:newFirstName, lastname:newLastName, phone:newPhone, email:newEmail}).returning(['id', 'user_id', 'firstname', 'lastname', 'phone', 'email'])
+        .then(addedUser => {
+          res.send(addedUser)
+        })
+    } else {
+      res.send(404)
+    }
+  })
+  })
+
 
 router.patch('/updatecontact', (req, res) => {
   var patchFirstName = req.body.firstname

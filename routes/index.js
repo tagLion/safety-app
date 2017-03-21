@@ -8,6 +8,9 @@ var stormpath = require('express-stormpath');
 router.get('/', function(req, res, next) {
   res.sendFile('../public/index.html')
 });
+router.get('/addecontact.html', stormpath.loginRequired, function(req, res, next) {
+  res.sendFile('../public/addecontact.html')
+});
 router.get('/isloggedin', stormpath.getUser, (req, res) =>{
     if(req.user){
       // res.send(res.locals.user.email)
