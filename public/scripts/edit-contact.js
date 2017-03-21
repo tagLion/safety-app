@@ -17,11 +17,14 @@ $(document).ready(function() {
 
 
 	var userContacts = []
+	var userId;
 
 	$.get(`https://getmesafe.herokuapp.com/users/econtacts/${emergencyContactId}`, (data) => {
 			data.forEach((element) => { 
 				userContacts.push(element)
 			})
+			userId = userContacts[0]['user_id']
+			console.log("userId is " + userId)
 			console.log(userContacts)
 
 			var source = $("#emergency-contact-template").html();
@@ -47,7 +50,7 @@ $(document).ready(function() {
 			data: JSON.stringify(contactObject),
 			contentType: "application/json; charset=utf-8",
 			success: function(returnValue){
-				location.href = "edit-profile-page.html"
+				location.href = "edit-profile-page.html?id="+userId
 			},
 			error: function(){
 				console.log('failure')
