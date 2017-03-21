@@ -16,8 +16,8 @@
       </style>
   </head>
   <body>
-    <button type="button" name="safe-button">I AM SAFE</button>
-    <button type="button" name="abort-button">ABORT</button>
+    <button type="button" id="safe-button">I AM SAFE</button>
+    <button type="button" id="abort-button">ABORT</button>
     <h1>Google Maps And Places Page</h1>
 
     <div id="map"></div>
@@ -26,7 +26,19 @@
       // prompted by your browser. If you see the error "The Geolocation service
       // failed.", it means you probably did not give permission for the browser to
       // locate you.
-
+      var num = 1
+      var int
+      var start
+      var incidentid
+      var pos
+    	$.get('/users/myid')
+    	.then(function(data){
+    	  console.log(data)
+    	   num = data[0].id || 1
+      $.post('/incidents', {user_id: num})
+      .then(function(data){
+        incidentid = data[0].id
+        console.log('incident posted')
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 39.397, lng: -104.644},
@@ -36,22 +48,40 @@
 
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
-          setInterval(function(){
+          int = setInterval(function(){
 
           navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
+            pos = {
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
             console.log(pos)
-
+            if ( start == undefined){
+              $.ajax({
+                method: 'PATCH',
+                url: '/incidents/'+ incidentid,
+                data: {
+                  start_LAT: pos.lat,
+                  start_LONG: pos.long,
+                  is_incident: true
+                }
+              })
+              .done(function(data){
+                console.log('POSTed initial coordinates')
+                start = true
+              })
+            }
+            $.post('/incidents/coordinates', {LAT: pos.lat, LONG: pos.long, incident_id: incidentid, user_id: num} )
+            .done(function(data){
+              console.log('location POST')
+            })
             infoWindow.setPosition(pos);
             infoWindow.setContent('Location found.');
             map.setCenter(pos);
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
           });
-        }, 2000)
+        }, 20000)
         } else {
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
@@ -64,6 +94,32 @@
           'Error: The Geolocation service failed.' :
           'Error: Your browser doesn\'t support geolocation.');
       }
+    })
+    })
+    $('#safe-button').click(function(e){
+      clearInterval(int)
+      $.ajax({
+        method: 'PATCH',
+        url: '/incidents/'+incident_id,
+        data: {
+          end_LAT: pos.lat,
+          end_LONG: pos.long,
+          is_incident: true
+        }
+      })
+    })
+    $('#abort-button').click(function(e){
+      clearInterval(int)
+      $.ajax({
+        method: 'PATCH',
+        url: '/incidents',
+        data: {
+          end_LAT: pos.lat,
+          end_LONG: pos.long,
+          is_incident: false
+        }
+      })
+    })
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6l6xQSaRk1QLgZB4dBVAPwuLSl6Z1ebQ&callback=initMap">
