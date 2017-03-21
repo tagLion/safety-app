@@ -15,12 +15,15 @@ router.post('/', stormpath.loginRequired, (req, res)=>{
   })
 })
 router.get('/myid', stormpath.getUser, (req, res)=>{
-  var email = res.locals.user.email
+  if (!!req.user) {
   knex('user').select('id').where('email', res.locals.user.email)
   .then(function(data){
     console.log(data)
     res.send(data)
   })
+} else{
+  res.send([{id: 1}])
+}
 })
 
 router.get('/primary', (req, res) => {
