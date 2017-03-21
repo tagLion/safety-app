@@ -4,6 +4,12 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       return knex('user').insert([
         {
+         firstname: 'Guest',
+         lastname: 'Guest',
+         phone: '3333334444',
+         email:'guestuser@gmail.com'
+        },
+        {
          firstname: 'Jessica',
          lastname: 'Smith',
          phone: '5104131234',
