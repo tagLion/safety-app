@@ -88,13 +88,13 @@ nav {
   justify-content: flex-end;
   font-size: calc(20px + 1vw); }
 
-.profile-submit-button-container {
+.profile-submit-button-container, .newecontact-button-container {
   margin-top: 50px;
   display: flex;
   justify-content: center;
   height: 10vh; }
 
-.profile-submit-button {
+.profile-submit-button, .newecontact-button {
   background-color: orange;
   font-size: calc(20px + 1vw); }
 
@@ -103,7 +103,7 @@ nav {
   justify-content: flex-end;
   font-size: calc(20px + 1vw); }
 
-  
+
 .contacts-button {
   height: 10vh;
   font-size: calc(20px + 1vw);
