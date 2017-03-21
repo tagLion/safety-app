@@ -45,7 +45,7 @@ router.get('/allecontacts', (req, res) => {
     })
 })
 
-router.get('/econtactbyuser/:id', (req, res) => {
+router.get('/econtactbyuser/:id', stormpath.loginRequired, (req, res) => {
   var econtactsForUser = req.params.id
   knex('eContact').where('user_id', econtactsForUser)
     .then(allUserContacts => {
@@ -53,12 +53,16 @@ router.get('/econtactbyuser/:id', (req, res) => {
     })
 })
 
-router.get('/econtacts/:id', (req, res) => {
+router.get('/econtacts/:id', stormpath.loginRequired, (req, res) => {
   var econtactID = req.params.id
-  knex('eContact').where('id', econtactID)
+  knex.select('user.id').from('eContact').join('user', 'user.id', 'user_id').where('user.email', res.locals.user.email)
+  .then(function(data){
+    console.log(data)
+  knex('eContact').where('id', econtactID).andWhere('user_id', data[0].id)
     .then(result => {
       res.send(result)
     })
+})
 })
 
 router.post('/newecontact', stormpath.loginRequired, (req, res) => {
@@ -85,18 +89,25 @@ router.post('/newecontact', stormpath.loginRequired, (req, res) => {
   })
 
 
-router.patch('/updatecontact', (req, res) => {
+router.patch('/updatecontact/:id', stormpath.loginRequired, (req, res) => {
   var patchFirstName = req.body.firstname
   var patchLastName = req.body.lastname
   var patchPhone = req.body.phone
   var patchEmail = req.body.email
   // var patchUserID = req.body.user_id
-  var patchContactID = req.body.id
+  var patchContactID = req.params.id
 
-  knex('eContact').where('id', patchContactID).update({ firstname:patchFirstName, lastname:patchLastName, phone:patchPhone, email:patchEmail})
+  knex.select('eContact.id').from('eContact').join('user', 'user.id', 'user_id').where('eContact.id', patchContactID).andWhere('user.email', res.locals.user.email)
+  .then(function(data){
+    if (data.length == 1){
+  knex('eContact').update({ firstname:patchFirstName, lastname:patchLastName, phone:patchPhone, email:patchEmail}).where('id', patchContactID)
     .then(result => {
       res.send(200)
     })
+  }else {
+    res.send(404)
+  }
+})
 })
 
 router.delete('/removecontact/:id', (req, res) => {
