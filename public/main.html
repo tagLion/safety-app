@@ -26,19 +26,12 @@
       // prompted by your browser. If you see the error "The Geolocation service
       // failed.", it means you probably did not give permission for the browser to
       // locate you.
-      var num = 1
-      var int
-      var start
-      var incidentid
-      var pos
-    	$.get('/users/myid')
-    	.then(function(data){
-    	  console.log(data)
-    	   num = data[0].id || 1
-      $.post('/incidents', {user_id: num})
-      .then(function(data){
-        incidentid = data[0].id
-        console.log('incident posted')
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+          'Error: The Geolocation service failed.' :
+          'Error: Your browser doesn\'t support geolocation.');
+      }
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 39.397, lng: -104.644},
@@ -62,7 +55,7 @@
                 url: '/incidents/'+ incidentid,
                 data: {
                   start_LAT: pos.lat,
-                  start_LONG: pos.long,
+                  start_LONG: pos.lng,
                   is_incident: true
                 }
               })
@@ -71,7 +64,7 @@
                 start = true
               })
             }
-            $.post('/incidents/coordinates', {LAT: pos.lat, LONG: pos.long, incident_id: incidentid, user_id: num} )
+            $.post('/incidents/coordinates', {LAT: pos.lat, LONG: pos.lng, incident_id: incidentid, user_id: num} )
             .done(function(data){
               console.log('location POST')
             })
@@ -87,37 +80,51 @@
           handleLocationError(false, infoWindow, map.getCenter());
         }
       }
-
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-          'Error: The Geolocation service failed.' :
-          'Error: Your browser doesn\'t support geolocation.');
-      }
+      var num = 1
+      var int
+      var start
+      var incidentid
+      var pos
+    	$.get('/users/myid')
+    	.then(function(data){
+    	  console.log(data)
+        if (data.length > 0){
+    	   num = data[0].id}
+      $.post('/incidents', {user_id: num})
+      .then(function(data){
+        console.log(data)
+        incidentid = data[0].id
+        console.log('incident posted')
     })
     })
     $('#safe-button').click(function(e){
       clearInterval(int)
       $.ajax({
         method: 'PATCH',
-        url: '/incidents/'+incident_id,
+        url: '/incidents/'+incidentid,
         data: {
           end_LAT: pos.lat,
-          end_LONG: pos.long,
+          end_LONG: pos.lng,
           is_incident: true
         }
+      })
+      .done(function(data){
+        console.log('you are safe')
       })
     })
     $('#abort-button').click(function(e){
       clearInterval(int)
       $.ajax({
         method: 'PATCH',
-        url: '/incidents',
+        url: '/incidents/'+incidentid,
         data: {
           end_LAT: pos.lat,
           end_LONG: pos.long,
           is_incident: false
         }
+      })
+      .done(function(data){
+        console.log('you aborted')
       })
     })
     </script>
