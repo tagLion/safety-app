@@ -20,7 +20,7 @@ app.use(cors(corsOptions))
 app.use(stormpath.init(app, {
   postLogoutHandler: function (account, req, res, next) {
     console.log('User', account.email, 'just logged out!');
-    res.redirect('/')
+    next()
   },
   client: {
     apiKey: {
