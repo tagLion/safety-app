@@ -4,7 +4,14 @@ var path = require('path')
 var knex = require('../db/knex.js')
 var stormpath = require('express-stormpath')
 
-router.get('/')
+router.get('/:id', (req, res) => {
+  var incidentID = req.params.id
+
+  knex('location').where('incident_id', incidentID).select('LAT', 'LONG')
+    .then(userLocations => {
+      res.send(userLocations)
+    })
+})
 
 router.post('/', (req, res) => {
   var userID = req.body.user_id
@@ -18,6 +25,10 @@ router.patch('/:id', (req, res) => {
   var incidentID = req.params.id
   var startLat = req.body.start_LAT
   var startLong = req.body.start_LONG
+
+  if (!!req.body.end_LAT) {
+    req.body.end_timestamp = knex.fn.now()
+  }
 
   knex('incident').where('id', incidentID).update(req.body)
     .then(result => {
