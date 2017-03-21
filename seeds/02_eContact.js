@@ -18,6 +18,13 @@ exports.seed = function(knex, Promise) {
           email: 'test@gmail.com'
         },
         {
+          user_id:knex('user').where('id', 2).select('id'),
+          firstname: 'Thomas',
+          lastname: 'Castleman',
+          phone: '9013269492',
+          email: 'thomas.castleman@gmail.com'
+        },
+        {
           user_id:knex('user').where('id', 3).select('id'),
           firstname: 'Rick',
           lastname: 'Simat',

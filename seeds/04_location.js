@@ -38,7 +38,14 @@ exports.seed = function(knex, Promise) {
           LAT: '39.716692',
           LONG: '-104.986141',
           incident_id:knex('incident').where('id', 3).select('id')
-        }
+        },
+        {
+          user_id:knex('user').where('id', 2).select('id'),
+          LAT: '39.722222',
+          LONG: '-104.978822',
+          incident_id:knex('incident').where('id', 4).select('id')
+        },
+
       ])
     })
 };

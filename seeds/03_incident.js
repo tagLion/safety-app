@@ -23,6 +23,11 @@ exports.seed = function(knex, Promise) {
           start_LONG: '-104.978877',
           end_LAT:'39.713169',
           end_LONG: '-104.985231'
+        },
+        {
+          user_id:knex('user').where('id',2).select('id'),
+          start_LAT: '39.722222',
+          start_LONG: '-104.978822'
         }
       ])
     })

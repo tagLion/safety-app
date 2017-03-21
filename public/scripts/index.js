@@ -9,6 +9,11 @@ $(document).ready(function(){
         if (data.length < 1){
           window.location = '/addphone.html'
         }
+        $.get('/friendsInDanger')
+        .then(function(data){
+          console.log(data)
+          alert('Friends in Danger: '+JSON.stringify(data))
+        })
       })
       .catch(function(err){
         window.location = '/addphone.html'
