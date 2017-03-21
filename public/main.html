@@ -38,43 +38,45 @@
           zoom: 6
         });
         var infoWindow = new google.maps.InfoWindow({map: map});
+        function getpos (){
 
+        navigator.geolocation.getCurrentPosition(function(position) {
+          pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          console.log(pos)
+          if ( start == undefined){
+            $.ajax({
+              method: 'PATCH',
+              url: '/incidents/'+ incidentid,
+              data: {
+                start_LAT: pos.lat,
+                start_LONG: pos.lng,
+                is_incident: true
+              }
+            })
+            .done(function(data){
+              console.log('POSTed initial coordinates')
+              start = true
+            })
+          }
+          $.post('/incidents/coordinates', {LAT: pos.lat, LONG: pos.lng, incident_id: incidentid, user_id: num} )
+          .done(function(data){
+            console.log('location POST')
+          })
+          infoWindow.setPosition(pos);
+          infoWindow.setContent('Location found.');
+          map.setCenter(pos);
+        }, function() {
+          handleLocationError(true, infoWindow, map.getCenter());
+        });
+      }
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
-          int = setInterval(function(){
+          getpos()
+          int = setInterval(function(){getpos()}, 20000)
 
-          navigator.geolocation.getCurrentPosition(function(position) {
-            pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-            console.log(pos)
-            if ( start == undefined){
-              $.ajax({
-                method: 'PATCH',
-                url: '/incidents/'+ incidentid,
-                data: {
-                  start_LAT: pos.lat,
-                  start_LONG: pos.lng,
-                  is_incident: true
-                }
-              })
-              .done(function(data){
-                console.log('POSTed initial coordinates')
-                start = true
-              })
-            }
-            $.post('/incidents/coordinates', {LAT: pos.lat, LONG: pos.lng, incident_id: incidentid, user_id: num} )
-            .done(function(data){
-              console.log('location POST')
-            })
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        }, 20000)
         } else {
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
