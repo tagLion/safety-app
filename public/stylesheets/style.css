@@ -1,5 +1,6 @@
+
 @import url("reset.css");
-/* read this about this box-sizing thingy 
+/* read this about this box-sizing thingy
 https://css-tricks.com/box-sizing/*/
 body {
   background-color: #f0f0f5;
@@ -36,6 +37,13 @@ nav {
   background-color: orange;
   color: white;
   text-shadow: black 1px 1px 1px; }
+  .logout-button {
+    height: 10vh;
+    font-size: calc(20px + 1vw);
+    font-family: 'Libre Baskerville', serif;
+    background-color: honeydew;
+    color: white;
+    text-shadow: black 1px 1px 1px; }
 
 .about-button {
   height: 10vh;
@@ -95,4 +103,12 @@ nav {
   justify-content: flex-end;
   font-size: calc(20px + 1vw); }
 
+  
+.contacts-button {
+  height: 10vh;
+  font-size: calc(20px + 1vw);
+  font-family: 'Libre Baskerville', serif;
+  background-color: seashell;
+  color: white;
+  text-shadow: black 1px 1px 1px; }
 /*# sourceMappingURL=style.css.map */

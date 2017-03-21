@@ -1,0 +1,16 @@
+$(document).ready(function(){
+  $.get('/isloggedin')
+  .then(function(data){
+    console.log(data)
+})
+$.get('users/myid')
+.then(function(data){
+  console.log(data)
+})
+$('#logout').click(function(e){
+  $.post('/logout')
+  .then(function(){
+  window.location.reload()
+})
+})
+})
