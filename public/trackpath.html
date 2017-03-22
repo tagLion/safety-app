@@ -25,19 +25,32 @@
       var labelIndex = 0;
 
       function initialize() {
-        var denver = { lat: 39.741291, lng: -104.993190 };
-        var bounds = new google.maps.LatLngBounds();
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 13,
-          center: denver
-        });
+        var initSet = {};
+        var map;
+
+        $.get(`https://getmesafe.herokuapp.com/incidents/${incidentID}`, (firstMark) => {
+          console.log(parseFloat(firstMark[0]["LAT"]));
+          console.log(parseFloat(firstMark[0]["LONG"]));
+
+            initSet = {lat:parseFloat(firstMark[0]["LAT"]) , lng:parseFloat(firstMark[0]["LONG"])}
+
+            map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 17
+            });
+            map.setCenter(new google.maps.LatLng(parseFloat(firstMark[0]["LAT"]), parseFloat(firstMark[0]["LONG"])));
+
+            addMarker(initSet, map);
+
+        })
 
         var pathArray=[];
 
-        addMarker(denver, map);
         var GetLocation = function() {
           var getData = setInterval(function() {
             $.get(`https://getmesafe.herokuapp.com/incidents/${incidentID}`, (data) => {
+
+            addMarker({lat:parseFloat(data[0]["LAT"]) , lng:parseFloat(data[0]["LONG"])}, map)
+
             pathArray=[]
             labelIndex = 0;
 

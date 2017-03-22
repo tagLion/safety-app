@@ -1,7 +1,8 @@
 @import url("reset.css");
 /* read this about this box-sizing thingy
 https://css-tricks.com/box-sizing/*/
-.login-button, .logout-button, .about-button, .edit-profile-button, .profile-form-container h1, .edit-contact-button a, .new-econtact-button, .edit-emergency-contact-form-container input, .edit-emergency-contact-form-container input::-webkit-input-placeholder, .emergency-contact-submit-button {
+
+.login-button, .logout-button, .about-button, .edit-profile-button .profile-form-container h1, .edit-contact-button a, .new-econtact-button, .edit-emergency-contact-form-container input, .edit-emergency-contact-form-container input::-webkit-input-placeholder, .emergency-contact-submit-button, .add-econtact-page-add-econtact-form-container input, .add-econtact-page-add-econtact-form-container input::-webkit-input-placeholder, .add-econtact-page-submit-button, .addphone-form-container input, .addphone-form-container input::-webkit-input-placeholder, .addphone-submit-button {
   color: white;
   text-shadow: black 1px 1px 1px; }
 
@@ -186,6 +187,84 @@ button {
   justify-content: center; }
 
 .emergency-contact-submit-button {
+  font-size: calc(14px + 1vw);
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  height: calc(30px + 3vh);
+  box-shadow: 0 0 7px 0px black;
+  background-color: #226666; }
+
+.add-econtact-page-add-econtact-form-container-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.add-emergency-contact-heading {
+  font-size: calc(20px + 3vw);
+  text-shadow: white 1px 1px 1px;
+  margin-bottom: 20px; }
+
+.add-econtact-page-add-econtact-form-container {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 15px 0px black;
+  background-color: #c5c5c5; }
+  .add-econtact-page-add-econtact-form-container input {
+    height: calc(30px + 2vh);
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    font-size: calc(14px + 1vw);
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 2px solid #226666; }
+    .add-econtact-page-add-econtact-form-container input::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      color: #DEDEDE; }
+
+.add-econtact-page-submit-button-container {
+  display: flex;
+  justify-content: center; }
+
+.add-econtact-page-submit-button {
+  font-size: calc(14px + 1vw);
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  height: calc(30px + 3vh);
+  box-shadow: 0 0 7px 0px black;
+  background-color: #226666; }
+
+.addphone-form-container-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.addphone-heading {
+  text-shadow: white 1px 1px 1px;
+  margin-bottom: 20px;
+  font-size: calc(14px + 2vw); }
+
+.addphone-form-container {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 15px 0px black;
+  background-color: #c5c5c5; }
+  .addphone-form-container input {
+    height: calc(30px + 2vh);
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    font-size: calc(14px + 1vw);
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 2px solid #226666; }
+    .addphone-form-container input::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      color: #DEDEDE; }
+
+.addphone-submit-button {
   font-size: calc(14px + 1vw);
   margin-top: 3vh;
   margin-bottom: 3vh;
