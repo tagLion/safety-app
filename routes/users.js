@@ -7,7 +7,7 @@ const stormpath = require('express-stormpath')
 router.post('/', stormpath.loginRequired, (req, res)=>{
   console.log(res.locals.user.email)
   req.body.firstname = res.locals.user.givenName
-  req.body.lastname = res.locals.user.surName
+  req.body.lastname = res.locals.user.surname
   req.body.email = res.locals.user.email
   knex('user').insert(req.body)
   .then(data =>{

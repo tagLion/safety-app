@@ -25,29 +25,34 @@ router.get('/endincident/:id', (req, res) => {
 })
 router.post('/', stormpath.getUser, (req, res) => {
   var userID = req.body.user_id
-  knex.select('id').from('user').where('email', res.locals.user.email)
+  knex.select('id', 'firstname', 'lastname').from('user').where('email', res.locals.user.email)
   .then(result =>{
     if (result.length > 0){
+    var fn = result[0].firstname
+    var ln = result[0].lastname
     userID = result[0].id
     console.log(result[0])
   } else {userID = 1}
     knex('incident').insert({user_id:userID}).returning(['id'])
-    .then(result => {
-      res.send(result)
+    .then(results => {
+      res.send(results)
+      var inc = results[0].id
       knex.select('phone').from('eContact').where('user_id', userID)
       .then(phoneNums=>{
+        if (userID !== 1){
         phoneNums.forEach(function (el, ind, arr){
           console.log(el)
           client.sendMessage({
             to: '+1'+el.phone+'',
             from: '+17209034041',
-            body: 'Hello from GetMeSafe'
+            body: 'Hello from GetMeSafe. \n'+fn+' '+ln+' is feeling unsafe. Track their location at: https://getmesafe.herokuapp.com/trackpath.html?id='+inc
           }, function(err,data){
             if(err)
             console.log(err);
             console.log(res.status(200).send());
           })
         })
+      }
       })
     })
   })
