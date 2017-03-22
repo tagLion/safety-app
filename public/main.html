@@ -347,6 +347,7 @@ calculateAndDisplayRoute(directionsService, directionsDisplay, myLocation, neare
       })
       .done(function(data){
         console.log('you are safe')
+        window.location = '/'
       })
     })
     $('#abort-button').click(function(e){
@@ -362,6 +363,7 @@ calculateAndDisplayRoute(directionsService, directionsDisplay, myLocation, neare
       })
       .done(function(data){
         console.log('you aborted')
+        window.location = '/'
       })
 
     })
