@@ -1,55 +1,64 @@
-
 @import url("reset.css");
-/* read this about this box-sizing thingy
+/* read this about this box-sizing thingy 
 https://css-tricks.com/box-sizing/*/
 body {
-  background-color: #f0f0f5;
-  background-size: cover; }
+  display: flex;
+  flex-direction: column;
+  background-color: #DEDEDE;
+  background-size: cover;
+  min-height: 100vh;
+  line-height: 1.25; }
 
 nav {
   height: 20vh;
-  display: flex; }
+  display: flex;
+  align-items: flex-start; }
   nav ul {
     display: flex;
     justify-content: space-between;
     align-items: center; }
 
 .home-link {
-  background-color: red;
+  background-color: #AA3939;
   font-size: calc(18px + 1vw); }
 
 .logo {
   height: 20vh; }
 
 .get-me-safe-button-container {
+  flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 60vh; }
+  margin-bottom: 100px; }
 
 .get-me-safe-button {
-  cursor: pointer; }
+  cursor: pointer;
+  box-shadow: 0 0 30px 0px black;
+  border-radius: 50%; }
+  .get-me-safe-button:active {
+    box-shadow: none; }
 
 .login-button {
-  height: 10vh;
+  height: 9vh;
   font-size: calc(20px + 1vw);
   font-family: 'Libre Baskerville', serif;
-  background-color: orange;
+  background-color: #2E882E;
   color: white;
   text-shadow: black 1px 1px 1px; }
-  .logout-button {
-    height: 10vh;
-    font-size: calc(20px + 1vw);
-    font-family: 'Libre Baskerville', serif;
-    background-color: honeydew;
-    color: white;
-    text-shadow: black 1px 1px 1px; }
+
+.logout-button {
+  height: 9vh;
+  background-color: #AA6C39;
+  color: white;
+  font-size: calc(20px + 1vw);
+  text-shadow: black 1px 1px 1px; }
 
 .about-button {
-  height: 10vh;
+  height: 9vh;
   font-size: calc(20px + 1vw);
   font-family: 'Libre Baskerville', serif;
-  background-color: grey;
+  background-color: #226666;
   color: white;
   text-shadow: black 1px 1px 1px; }
 
@@ -69,7 +78,7 @@ nav {
     text-shadow: black 1px 1px 1px; }
 
 .user-form-container {
-  background-color: yellow;
+  background-color: #AA6C39;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -77,7 +86,7 @@ nav {
   margin-bottom: 50px; }
 
 .emergency-contact-form-container {
-  background-color: green;
+  background-color: #AA3939;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -88,14 +97,14 @@ nav {
   justify-content: flex-end;
   font-size: calc(20px + 1vw); }
 
-.profile-submit-button-container, .newecontact-button-container {
+.profile-submit-button-container {
   margin-top: 50px;
   display: flex;
   justify-content: center;
   height: 10vh; }
 
-.profile-submit-button, .newecontact-button {
-  background-color: orange;
+.profile-submit-button {
+  background-color: #AA6C39;
   font-size: calc(20px + 1vw); }
 
 .edit-contact-button-container {
@@ -103,12 +112,40 @@ nav {
   justify-content: flex-end;
   font-size: calc(20px + 1vw); }
 
+.fa-building {
+  font-size: calc(16px + 1vw);
+  color: #226666; }
 
-.contacts-button {
-  height: 10vh;
-  font-size: calc(20px + 1vw);
-  font-family: 'Libre Baskerville', serif;
-  background-color: seashell;
-  color: white;
-  text-shadow: black 1px 1px 1px; }
+.fa-building-o {
+  font-size: calc(18px + 1.5vw);
+  color: #AA6C39; }
+
+.fa-hospital-o {
+  color: #AA3939;
+  font-size: calc(14px + 1.5vw); }
+
+.logo-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
+  margin-left: 20px; }
+
+.get-me-safe-logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer; }
+
+.logo-icon-container {
+  display: flex; }
+
+.logo-text-container {
+  display: flex;
+  justify-content: center; }
+
+.get-me-safe-logo-text {
+  color: #226666;
+  font-family: 'Libre Baskerville', serif; }
+
 /*# sourceMappingURL=style.css.map */
