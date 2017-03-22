@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Showing The Path Of Your Friend</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <style>
+      #map {
+        height: 100%;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6l6xQSaRk1QLgZB4dBVAPwuLSl6Z1ebQ"></script>
+    <script>
+
+      var incidentID = decodeURIComponent(window.location.search).split("=")[1]
+
+      var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var labelIndex = 0;
+
+      function initialize() {
+        var denver = { lat: 39.741291, lng: -104.993190 };
+        var bounds = new google.maps.LatLngBounds();
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: denver
+        });
+
+        var pathArray=[];
+
+        addMarker(denver, map);
+        var GetLocation = function() {
+          var getData = setInterval(function() {
+            $.get(`https://getmesafe.herokuapp.com/incidents/${incidentID}`, (data) => {
+            pathArray=[]
+            labelIndex = 0;
+
+              for (var i = 0; i < data.length; i++) {
+                  pathArray.push({lat:parseFloat(data[i]["LAT"]) , lng:parseFloat(data[i]["LONG"])})
+
+                  addMarker({lat:parseFloat(data[i]["LAT"]) , lng:parseFloat(data[i]["LONG"])}, map);
+
+                  var flightPath = new google.maps.Polyline({
+                    path: pathArray,
+                    geodesic: true,
+                    strokeColor: '#66ccff',
+                    strokeOpacity: 1.0,
+                    strokeWeight: 2
+                  });
+                  flightPath.setMap(map);
+              }
+            })
+          $.get(`https://getmesafe.herokuapp.com/incidents/endincident/${incidentID}`, (incidentOVER) => {
+              if (incidentOVER) {
+                clearInterval(getData);
+              }
+            })
+          }, 5000)
+          getData;
+        }
+        GetLocation();
+      }
+
+        function addMarker(location, map) {
+          var marker = new google.maps.Marker({
+            position: location,
+            animation: google.maps.Animation.DROP,
+            label: labels[labelIndex++ % labels.length],
+            map: map
+          });
+        }
+
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </head>
+  <body>
+    <h1>Track You Friend</h1>
+    <div id="map"></div>
+  </body>
+</html>

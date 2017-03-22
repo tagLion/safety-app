@@ -14,6 +14,15 @@ router.get('/:id', (req, res) => {
     })
 })
 
+
+router.get('/endincident/:id', (req, res) => {
+  var incidentID = req.params.id
+
+  knex('incident').where('id', incidentID).select('end_timestamp')
+    .then(endTime => {
+      res.send(endTime[0]["end_timestamp"])
+    })
+})
 router.post('/', stormpath.getUser, (req, res) => {
   var userID = req.body.user_id
   knex.select('id').from('user').where('email', res.locals.user.email)

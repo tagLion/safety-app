@@ -13,45 +13,48 @@
 	</head>
 	<body>
 		<nav class='top-nav'>
-			<ul class = "nav-list col-xs-12">
-				<li><img class = "logo" src="logo.png"></li>
-				<li class= "home-link"><a href="index.html">Home</a></li>
+			<ul class = "nav-list">
+				<li>
+					<div class = "logo-container"> <a href="/index.html">		<div class = "get-me-safe-logo">
+							<div class = "logo-icon-container"><i class="fa fa-building" aria-hidden="true"></i>
+								<i class="fa fa-building-o" aria-hidden="true"></i>
+								<i class="fa fa-hospital-o" aria-hidden="true"></i>
+								<i class="fa fa-building" aria-hidden="true"></i>
+								<i class="fa fa-building-o" aria-hidden="true"></i>
+							</div>
+							<div class = "logo-text-container"></div>
+							<div class ="get-me-safe-logo-text">GetMeSafe</div>
+						</div></a>
+				
+					</div>
+				</li>
 			</ul>
 		</nav>
-
-
-		<div class = "profile-form-container">
+		<main class = "edit-profile-page-main">
+			<div class = "profile-form-container">
 				<script id="emergency-contact-template" type="text/x-handlebars-template">
-					<h1>Emergency Contact</h1>
-					<h2>{{firstname}}</h2>
-					<h2>{{lastname}}</h2>
-					<h2>{{phone}}</h2>
-					<h2>{{email}}</h2>
+				<div class = "edit-profile-page-emergency-contact-container col-xs-8">
+					<h1 class="emergency-contact-heading">Emergency Contact</h1>
+					<span><i class="fa fa-user" aria-hidden="true"></i>
+ {{firstname}}</span> <span>{{lastname}}</span>
+					<h2><i class="fa fa-phone" aria-hidden="true"></i> {{phone}}</h2>
+					<h2><i class="fa fa-envelope-o" aria-hidden="true"></i> {{email}}</h2>
 					<div class = "emergency-contact-button-container">
-						<button class = "edit-contact-button-{{id}}"><a href="edit-contact.html?id={{id}}"">Edit A Contact</a></button>
-						<button class = "delete-contact-button delete-contact-button-{{id}}" data-id = {{id}}>Delete</button>
-
-
+							<button class = "edit-contact-button edit-contact-button-{{id}}"><a href="edit-contact.html?id={{id}}""><i class="fa fa-pencil" aria-hidden="true"></i>
+</a></button>
+							<button class = "delete-contact-button delete-contact-button-{{id}}" data-id = {{id}}><i class="fa fa-trash" aria-hidden="true"></i>
+</button>
+						</div>
 					</div>
-					<br>
-
-
 				</script>
-		</div>
-
+			</div>
 		<div class="emergency-contacts-placeholder"></div>
-
-
-
-
-		<div class = "newecontact-button-container col-xs-10">
+		</main>
+		<div class = "new-econtact-button-container col-xs-12">
 			<a href="/addecontact.html">
-			<button class = "newecontact-button col-xs-10">New eContact</button>
-		</a>
-		</div>
-
-		<div class = "profile-submit-button-container col-xs-10">
-			<button class = "profile-submit-button col-xs-10">Submit</button>
+				<button class = "new-econtact-button"><i class="fa fa-plus" aria-hidden="true"></i>
+ New Emergency Contact</button>
+			</a>
 		</div>
 	</div>
 </body>
