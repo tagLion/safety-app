@@ -163,8 +163,6 @@ button{
 	font-size: $login-button-font-size;
 }
 
-//edit profile page
-
 .edit-profile-page-emergency-contact-container{
 	margin-bottom: calc(30px + 10vh);
 	background-color: lighten($background-grey, 5);
@@ -217,7 +215,46 @@ button{
 
 
 
+//edit-contact.html
+.edit-contact-page-emergency-contact-container{
+	display: flex;
+	justify-content: center;
+}
+.edit-emergency-contact-form-container{
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0 0 15px 0px black;
+	background-color: darken($background-grey, 10);
+	input{
+		height: calc(30px + 2vh);
+		margin-top: 3vh;
+		margin-bottom: 3vh;
+		font-size: calc(14px + 1vw);
+		border: 0;
+		outline: 0;
+		background: transparent;
+		border-bottom: 2px solid $accent-blue;
+		@extend %white-text-black-shadow;
+			&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+				@extend %white-text-black-shadow;
+				color: $background-grey;
+			}
+		}
+}
 
+.emergency-contact-submit-button-container{
+	display: flex;
+	justify-content: center;
+}
+.emergency-contact-submit-button{
+	font-size: calc(14px + 1vw);
+	margin-top: 3vh;
+	margin-bottom: 3vh;
+	height: calc(30px + 3vh);
+	box-shadow: 0 0 7px 0px black;
+	background-color: $accent-blue;
+	@extend %white-text-black-shadow;
+}
 
 //logo
 .fa-building{

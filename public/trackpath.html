@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>Showing The Path Of Your Friend</title>
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="./trackpath.css">
     <style>
       #map {
         height: 100%;
@@ -58,6 +59,7 @@
           $.get(`https://getmesafe.herokuapp.com/incidents/endincident/${incidentID}`, (incidentOVER) => {
               if (incidentOVER) {
                 clearInterval(getData);
+                $('.show-safe').css('display', 'block')
               }
             })
           }, 5000)
@@ -81,6 +83,7 @@
   </head>
   <body>
     <h1>Track You Friend</h1>
+    <h2 class="show-safe">You Friend is Safe!</h2>
     <div id="map"></div>
   </body>
 </html>

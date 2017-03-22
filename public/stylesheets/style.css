@@ -1,7 +1,7 @@
 @import url("reset.css");
 /* read this about this box-sizing thingy 
 https://css-tricks.com/box-sizing/*/
-.login-button, .logout-button, .about-button, .profile-form-container h1, .edit-contact-button a, .new-econtact-button {
+.login-button, .logout-button, .about-button, .profile-form-container h1, .edit-contact-button a, .new-econtact-button, .edit-emergency-contact-form-container input, .edit-emergency-contact-form-container input::-webkit-input-placeholder, .emergency-contact-submit-button {
   color: white;
   text-shadow: black 1px 1px 1px; }
 
@@ -154,6 +154,40 @@ button {
   width: 50vw;
   height: calc(20px + 5vh);
   background-color: #2E882E; }
+
+.edit-contact-page-emergency-contact-container {
+  display: flex;
+  justify-content: center; }
+
+.edit-emergency-contact-form-container {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 15px 0px black;
+  background-color: #c5c5c5; }
+  .edit-emergency-contact-form-container input {
+    height: calc(30px + 2vh);
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    font-size: calc(14px + 1vw);
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 2px solid #226666; }
+    .edit-emergency-contact-form-container input::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      color: #DEDEDE; }
+
+.emergency-contact-submit-button-container {
+  display: flex;
+  justify-content: center; }
+
+.emergency-contact-submit-button {
+  font-size: calc(14px + 1vw);
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  height: calc(30px + 3vh);
+  box-shadow: 0 0 7px 0px black;
+  background-color: #226666; }
 
 .fa-building {
   font-size: calc(16px + 1vw);
