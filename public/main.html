@@ -20,6 +20,8 @@
   <body>
     <button type="button" id="safe-button">I AM SAFE</button>
     <button type="button" id="abort-button">ABORT</button>
+    <button type="button" id="next-button">NEXT</button>
+    <button type="button" id="prev-button">PREVIOUS</button>
     <h1>Google Maps And Places Page</h1>
     <h4>Our Best Guess</h4>
 
@@ -28,10 +30,12 @@
 <div id = "bottom-panel"></div>
     <script>
     var map
+    var skips = 0
     var num = 1
     var int
     var start
     var infoWindow
+    var places = null
     var directionsDisplay = null
     var pos
     var incidentid
@@ -211,7 +215,6 @@ types: ['accounting',
 'insurance_agency',
 'jewelry_store',
 'laundry',
-'lawyer',
 'library',
 'liquor_store',
 'local_government_office',
@@ -253,15 +256,26 @@ types: ['accounting',
 'veterinary_care',
 'zoo']
 };
-
+if (places === null){
 service = new google.maps.places.PlacesService(map);
-service.nearbySearch(request, callback);
+service.nearbySearch(request, callback)
+} else {
+  directionsService = new google.maps.DirectionsService
+  if (directionsDisplay !== null){directionsDisplay.setMap(null)}
+  directionsDisplay = new google.maps.DirectionsRenderer({
+  map: map
+  })
+  nearestSafeSpaceCoords = places[skips].geometry.location
+  calculateAndDisplayRoute(directionsService, directionsDisplay, myLocation, nearestSafeSpaceCoords);
+  }
+}
 
 
 function callback(results, status) {
 if (status == google.maps.places.PlacesServiceStatus.OK) {
 console.log(results)
-nearestSafeSpaceCoords = results[0].geometry.location
+places = results
+nearestSafeSpaceCoords = places[0].geometry.location
 markerB = new google.maps.Marker({
 position: nearestSafeSpaceCoords,
 title: results[0].name,
@@ -274,42 +288,11 @@ if (directionsDisplay !== null){directionsDisplay.setMap(null)}
 directionsDisplay = new google.maps.DirectionsRenderer({
 map: map
 })
-//    markerA = new google.maps.Marker({
-//    position: myLocation,
-//  title: "Your Location",
-//label: "You",
-//map: map
 // }),
 
 // get route from myLocation to nearestSafeSpaceCoords
 calculateAndDisplayRoute(directionsService, directionsDisplay, myLocation, nearestSafeSpaceCoords);
 }
-}
-//     $.ajax({
-//     type: 'GET',
-//     url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + pos.lat + ','+ pos.lng + '&opennow&rankby=distance&key=AIzaSyDWswS_LVzU1y8k-zYxee3zijchYq6b3fM',
-//     async: false,
-//     jsonpCallback: 'jsonCallback',
-//     contentType: "application/json",
-//     dataType: 'jsonp',
-//     success: function (json) {
-//         console.dir(json.sites);
-//     },
-//     error: function (e) {
-//         console.log(e.message);
-//
-//     }
-// });
-//           $.getJSON()
-//           .done(function(data){
-//             console.log(data)
-//             var targetLocation = data['results'][0]['geometry']['location']
-// console.log(targetLocation)
-
-
-
-// Try HTML5 geolocation.
-
 
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
@@ -362,7 +345,16 @@ calculateAndDisplayRoute(directionsService, directionsDisplay, myLocation, neare
       .done(function(data){
         console.log('you aborted')
       })
+
     })
+    $('#next-button').click(function(e){
+      skips++;
+      updateDirs()
+    })
+    $('#prev-button').click(function(e){
+      if (skips > 0 ){skips--; updateDirs()} else { return false};
+    })
+
 
   }
     </script>
