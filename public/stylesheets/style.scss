@@ -7,21 +7,27 @@ $nav-height: 20vh;
 	
 $login-button-font-size: calc(20px + 1vw);
 
+//color palette:
+$emergency-red : #AA3939; //distress color
+$safe-green: #2E882E; //safe color
+$background-grey: #DEDEDE;// background
+$text-grey: #333333; //text
+$accent-orange: #AA6C39;
+$accent-blue: #226666;
 
-//colors
-$background-color: #f0f0f5;
-$emergency-color: red;
-$login-color : orange;
-$about-us-color: grey;
-$user-form-color: yellow;
-$emergency-contact-form-color: green;
 body{
-	background-color: $background-color;
+	display: flex;
+	flex-direction: column;
+	background-color: $background-grey;
 	background-size: cover;
+	min-height: 100vh;
+ 	line-height: 1.25;
 }
+
 nav{
 	height: $nav-height;
 	display: flex;
+	align-items: flex-start;
 	ul{
 		display: flex;
 		justify-content: space-between;
@@ -29,35 +35,49 @@ nav{
 	}
 }
 .home-link{
-	background-color: red;
+	background-color: $emergency-red;
 	font-size: calc(18px + 1vw);
 }
 .logo{
 	height: $nav-height;
 }
 .get-me-safe-button-container{
+	flex-grow: 1;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-height: 60vh;
+	margin-bottom: 100px;
 }
 .get-me-safe-button{
 	cursor: pointer;
+	box-shadow: 0 0 30px 0px black;
+	border-radius: 50%;
+	&:active{
+		box-shadow: none;
+	}
+
 }
 .login-button{
-	height: 10vh;
+	height: 9vh;
 	font-size: calc(20px + 1vw);
 	font-family: 'Libre Baskerville', serif;
-	background-color: $login-color;
+	background-color: $safe-green;
 	color: white;
 	text-shadow: black 1px 1px 1px;
 
 }
+.logout-button{
+	height: 9vh;
+	background-color: $accent-orange;
+	color: white;
+	font-size: calc(20px + 1vw);
+	text-shadow: black 1px 1px 1px;
+}
 .about-button{
-	height: 10vh;
+	height: 9vh;
 	font-size: calc(20px + 1vw);
 	font-family: 'Libre Baskerville', serif;
-	background-color: $about-us-color;
+	background-color: $accent-blue;
 	color: white;
 	text-shadow: black 1px 1px 1px;
 }
@@ -80,7 +100,7 @@ nav{
 	}
 }
 .user-form-container{
-	background-color: $user-form-color;
+	background-color: $accent-orange;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -92,7 +112,7 @@ nav{
 }
 
 .emergency-contact-form-container{
-	background-color: $emergency-contact-form-color;
+	background-color: $emergency-red;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -115,7 +135,7 @@ nav{
 }
 
 .profile-submit-button{
-	background-color: $login-color;
+	background-color: $accent-orange;
 	font-size: $login-button-font-size;
 }
 
@@ -125,6 +145,50 @@ nav{
 	justify-content: flex-end;
 	font-size: $login-button-font-size;
 
+}
+
+
+//logo
+.fa-building{
+  font-size: calc(16px + 1vw);
+  color: $accent-blue;
+}
+
+.fa-building-o{
+  font-size: calc(18px + 1.5vw);
+  color: $accent-orange;
+}
+
+.fa-hospital-o{
+  color: $emergency-red;
+  font-size: calc(14px + 1.5vw);
+}
+
+.logo-container{
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.get-me-safe-logo{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.logo-icon-container{
+  display: flex;
+}
+.logo-text-container{
+  display: flex;
+  justify-content: center;
+}
+
+.get-me-safe-logo-text{
+  color: $accent-blue;
+  font-family: 'Libre Baskerville', serif;
 }
 
 
