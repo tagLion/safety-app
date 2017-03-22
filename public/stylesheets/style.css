@@ -1,16 +1,28 @@
 @import url("reset.css");
 /* read this about this box-sizing thingy 
 https://css-tricks.com/box-sizing/*/
+.login-button, .logout-button, .about-button, .profile-form-container h1, .edit-contact-button a, .new-econtact-button {
+  color: white;
+  text-shadow: black 1px 1px 1px; }
+
+.delete-contact-button, .edit-contact-button, .new-econtact-button {
+  box-shadow: 0 0 15px 0px black;
+  outline: none; }
+  .delete-contact-button:active, .edit-contact-button:active, .new-econtact-button:active {
+    box-shadow: none; }
+
 body {
   display: flex;
   flex-direction: column;
   background-color: #DEDEDE;
   background-size: cover;
   min-height: 100vh;
-  line-height: 1.25; }
+  line-height: 1.25;
+  font-family: 'Libre Baskerville', serif;
+  color: #333333; }
 
 nav {
-  height: 20vh;
+  height: 10vh;
   display: flex;
   align-items: flex-start; }
   nav ul {
@@ -18,12 +30,15 @@ nav {
     justify-content: space-between;
     align-items: center; }
 
+button {
+  outline: none; }
+
 .home-link {
   background-color: #AA3939;
   font-size: calc(18px + 1vw); }
 
 .logo {
-  height: 20vh; }
+  height: 10vh; }
 
 .get-me-safe-button-container {
   flex-grow: 1;
@@ -43,24 +58,18 @@ nav {
   height: 9vh;
   font-size: calc(20px + 1vw);
   font-family: 'Libre Baskerville', serif;
-  background-color: #2E882E;
-  color: white;
-  text-shadow: black 1px 1px 1px; }
+  background-color: #2E882E; }
 
 .logout-button {
   height: 9vh;
   background-color: #AA6C39;
-  color: white;
-  font-size: calc(20px + 1vw);
-  text-shadow: black 1px 1px 1px; }
+  font-size: calc(20px + 1vw); }
 
 .about-button {
   height: 9vh;
   font-size: calc(20px + 1vw);
   font-family: 'Libre Baskerville', serif;
-  background-color: #226666;
-  color: white;
-  text-shadow: black 1px 1px 1px; }
+  background-color: #226666; }
 
 .user-form-container input, .emergency-contact-form-container input {
   margin-top: 10px;
@@ -73,9 +82,7 @@ nav {
   flex-direction: column;
   align-items: center; }
   .profile-form-container h1 {
-    font-size: calc(20px + 1vw);
-    color: white;
-    text-shadow: black 1px 1px 1px; }
+    font-size: calc(20px + 1vw); }
 
 .user-form-container {
   background-color: #AA6C39;
@@ -84,6 +91,10 @@ nav {
   justify-content: center;
   align-items: center;
   margin-bottom: 50px; }
+
+.edit-profile-page-main {
+  margin-left: 20px;
+  margin-bottom: 100px; }
 
 .emergency-contact-form-container {
   background-color: #AA3939;
@@ -107,10 +118,42 @@ nav {
   background-color: #AA6C39;
   font-size: calc(20px + 1vw); }
 
-.edit-contact-button-container {
+.edit-profile-page-emergency-contact-container {
+  margin-bottom: calc(30px + 10vh);
+  background-color: #ebebeb;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black; }
+
+.emergency-contact-heading {
+  font-size: calc(16px + .5vw); }
+
+.emergency-contact-button-container {
   display: flex;
-  justify-content: flex-end;
-  font-size: calc(20px + 1vw); }
+  justify-content: space-between;
+  width: 50%;
+  font-size: calc(16px + 1vw);
+  margin-bottom: 10px;
+  margin-top: 20px; }
+
+.delete-contact-button {
+  background-color: #AA3939;
+  width: 40%;
+  box-shadow: 0 0 7px 0px black; }
+
+.edit-contact-button {
+  background-color: #226666;
+  width: 40%;
+  box-shadow: 0 0 7px 0px black; }
+
+.new-econtact-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.new-econtact-button {
+  width: 50vw;
+  height: calc(20px + 5vh);
+  background-color: #2E882E; }
 
 .fa-building {
   font-size: calc(16px + 1vw);
