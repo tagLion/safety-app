@@ -12,19 +12,33 @@
 		<script src ="./scripts/index.js"></script>
 	</head>
 	<body>
-		<nav class='top-nav'>
-			<ul class = "nav-list">
-				<li><img class = "logo" src="logo.png"></li>
-			</ul>
-		</nav>
-		<div class = "get-me-safe-button-container col-xs-12">
-			<img class = "get-me-safe-button" src="getmesafebutton.png">
+<nav class='top-nav'>
+	<ul class = "nav-list">
+		<li>
+			<div class = "logo-container">
+				<div class = "get-me-safe-logo">
+					<div class = "logo-icon-container"><i class="fa fa-building" aria-hidden="true"></i>
+						<i class="fa fa-building-o" aria-hidden="true"></i>
+						<i class="fa fa-hospital-o" aria-hidden="true"></i>
+						<i class="fa fa-building" aria-hidden="true"></i>
+						<i class="fa fa-building-o" aria-hidden="true"></i>
+					</div>
+					<div class = "logo-text-container"></div>
+					<div class ="get-me-safe-logo-text">GetMeSafe</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+</nav>
+		<div class = "get-me-safe-button-container col-xs-12"><a href="/main.html">
+			<img class = "get-me-safe-button" src="getmesafebutton.png"></a>
 		</div>
 		<footer>
-			<a href="./econtact.html"><button class = "contacts-button col-xs-12">eContacts</button></a>
+			<!-- <a href="./econtact.html"><button class = "contacts-button col-xs-12">eContacts</button></a> -->
 			<a href="/login"><button class = "login-button col-xs-12">Login</button></a>
 			<form action="/logout" method="POST"><button type="submit" class="logout-button col-xs-12">Log Out</button></form>
 			<a href="#"><button class = "about-button col-xs-12">About Us</button></a>
+			<a href="/edit-profile-page.html"><button class = "edit-profile-button col-xs-12">Edit Profile</button></a>
 		</footer>
 	</body>
 </html>

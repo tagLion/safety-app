@@ -7,20 +7,23 @@ const stormpath = require('express-stormpath')
 router.post('/', stormpath.loginRequired, (req, res)=>{
   console.log(res.locals.user.email)
   req.body.firstname = res.locals.user.givenName
-  req.body.lastname = res.locals.user.surName
+  req.body.lastname = res.locals.user.surname
   req.body.email = res.locals.user.email
   knex('user').insert(req.body)
   .then(data =>{
     res.send(data)
   })
 })
-router.get('/myid', stormpath.loginRequired, (req, res)=>{
-  var email = res.locals.user.email
+router.get('/myid', stormpath.getUser, (req, res)=>{
+  if (!!req.user) {
   knex('user').select('id').where('email', res.locals.user.email)
   .then(function(data){
     console.log(data)
     res.send(data)
   })
+} else{
+  res.send([{id: 1}])
+}
 })
 
 router.get('/primary', (req, res) => {

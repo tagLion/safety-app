@@ -3,63 +3,109 @@
 https://css-tricks.com/box-sizing/*/
 
 
-$nav-height: 20vh;
+$nav-height: 10vh;
 	
 $login-button-font-size: calc(20px + 1vw);
 
+//color palette:
+$emergency-red : #AA3939; //distress color
+$safe-green: #2E882E; //safe color
+$background-grey: #DEDEDE;// background
+$text-grey: #333333; //text
+$accent-orange: #AA6C39;
+$accent-blue: #226666; //edits etc.
 
-//colors
-$background-color: #f0f0f5;
-$emergency-color: red;
-$login-color : orange;
-$about-us-color: grey;
-$user-form-color: yellow;
-$emergency-contact-form-color: green;
-body{
-	background-color: $background-color;
-	background-size: cover;
+
+
+
+%white-text-black-shadow{
+	color: white;
+	text-shadow: black 1px 1px 1px;
 }
+
+%button-shadow{
+	box-shadow: 0 0 15px 0px black;
+	outline: none;
+	&:active{
+		box-shadow: none;
+	}
+}
+
+body{
+	display: flex;
+	flex-direction: column;
+	background-color: $background-grey;
+	background-size: cover;
+	min-height: 100vh;
+ 	line-height: 1.25;
+  	font-family: 'Libre Baskerville', serif;
+  	color: $text-grey;
+}
+
 nav{
 	height: $nav-height;
 	display: flex;
+	align-items: flex-start;
 	ul{
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 	}
 }
+
+button{
+	outline: none;
+}
+
 .home-link{
-	background-color: red;
+	background-color: $emergency-red;
 	font-size: calc(18px + 1vw);
 }
 .logo{
 	height: $nav-height;
 }
 .get-me-safe-button-container{
+	flex-grow: 1;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-height: 60vh;
+	margin-bottom: 100px;
 }
 .get-me-safe-button{
 	cursor: pointer;
+	box-shadow: 0 0 30px 0px black;
+	border-radius: 50%;
+	&:active{
+		box-shadow: none;
+	}
 }
 .login-button{
-	height: 10vh;
+	height: 9vh;
 	font-size: calc(20px + 1vw);
 	font-family: 'Libre Baskerville', serif;
-	background-color: $login-color;
-	color: white;
-	text-shadow: black 1px 1px 1px;
+	background-color: $safe-green;
+	@extend %white-text-black-shadow;
 
 }
+.logout-button{
+	height: 9vh;
+	background-color: $emergency-red;
+	font-size: calc(20px + 1vw);
+	@extend %white-text-black-shadow;
+}
+
 .about-button{
-	height: 10vh;
+	height: 9vh;
 	font-size: calc(20px + 1vw);
 	font-family: 'Libre Baskerville', serif;
-	background-color: $about-us-color;
-	color: white;
-	text-shadow: black 1px 1px 1px;
+	background-color: $accent-orange;
+	@extend %white-text-black-shadow;
+}
+.edit-profile-button{
+	height: 9vh;
+	background-color: $accent-blue;
+	font-size: calc(20px + 1vw);
+	@extend %white-text-black-shadow;
 }
 
 //edit-profile-page
@@ -75,12 +121,11 @@ nav{
 	align-items: center;
 	h1{
 		font-size: calc(20px + 1vw);
-		color: white;
-		text-shadow: black 1px 1px 1px;
+		@extend %white-text-black-shadow;	
 	}
 }
 .user-form-container{
-	background-color: $user-form-color;
+	background-color: $accent-orange;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -91,8 +136,13 @@ nav{
 	}
 }
 
+.edit-profile-page-main{
+	margin-left: 20px;
+	margin-bottom: 100px;
+}
+
 .emergency-contact-form-container{
-	background-color: $emergency-contact-form-color;
+	background-color: $emergency-red;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -115,16 +165,238 @@ nav{
 }
 
 .profile-submit-button{
-	background-color: $login-color;
+	background-color: $accent-orange;
 	font-size: $login-button-font-size;
 }
 
-//edit profile page
-.edit-contact-button-container{
-	display: flex;
-	justify-content: flex-end;
-	font-size: $login-button-font-size;
+.edit-profile-page-emergency-contact-container{
+	margin-bottom: calc(30px + 10vh);
+	background-color: lighten($background-grey, 5);
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
+}
 
+.emergency-contact-heading{
+	font-size: calc(16px + .5vw);
+}
+
+.emergency-contact-button-container{
+	display: flex;
+	justify-content: space-between;
+	width: 50%;
+	font-size: calc(16px + 1vw);
+	margin-bottom: 10px;
+	margin-top: 20px;
+}
+
+.delete-contact-button{
+	background-color: $emergency-red;
+	width: 40%;
+	@extend %button-shadow;
+	box-shadow: 0 0 7px 0px black;
+
+}
+.edit-contact-button{
+	background-color: $accent-blue;
+	width: 40%;
+	@extend %button-shadow;
+	box-shadow: 0 0 7px 0px black;
+	a{
+		@extend %white-text-black-shadow;
+	}
+}
+
+.new-econtact-button-container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.new-econtact-button{
+	width: 50vw;
+	height: calc(20px + 5vh);
+	background-color: $safe-green;
+	@extend %white-text-black-shadow;
+	@extend %button-shadow;
+}
+
+
+
+//edit-contact.html
+.edit-contact-page-emergency-contact-container{
+	display: flex;
+	justify-content: center;
+}
+.edit-emergency-contact-form-container{
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0 0 15px 0px black;
+	background-color: darken($background-grey, 10);
+	input{
+		height: calc(30px + 2vh);
+		margin-top: 3vh;
+		margin-bottom: 3vh;
+		font-size: calc(14px + 1vw);
+		border: 0;
+		outline: 0;
+		background: transparent;
+		border-bottom: 2px solid $accent-blue;
+		@extend %white-text-black-shadow;
+			&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+				@extend %white-text-black-shadow;
+				color: $background-grey;
+			}
+		}
+}
+
+.emergency-contact-submit-button-container{
+	display: flex;
+	justify-content: center;
+}
+.emergency-contact-submit-button{
+	font-size: calc(14px + 1vw);
+	margin-top: 3vh;
+	margin-bottom: 3vh;
+	height: calc(30px + 3vh);
+	box-shadow: 0 0 7px 0px black;
+	background-color: $accent-blue;
+	@extend %white-text-black-shadow;
+}
+
+//addecontact.html
+.add-econtact-page-add-econtact-form-container-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.add-emergency-contact-heading{
+	font-size: calc(20px + 3vw);
+	text-shadow: white 1px 1px 1px;
+	margin-bottom: 20px;
+}
+.add-econtact-page-add-econtact-form-container{
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0 0 15px 0px black;
+	background-color: darken($background-grey, 10);
+	input{
+		height: calc(30px + 2vh);
+		margin-top: 3vh;
+		margin-bottom: 3vh;
+		font-size: calc(14px + 1vw);
+		border: 0;
+		outline: 0;
+		background: transparent;
+		border-bottom: 2px solid $accent-blue;
+		@extend %white-text-black-shadow;
+			&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+				@extend %white-text-black-shadow;
+				color: $background-grey;
+			}
+		}
+}
+
+.add-econtact-page-submit-button-container{
+	display: flex;
+	justify-content: center;
+}
+.add-econtact-page-submit-button{
+	font-size: calc(14px + 1vw);
+	margin-top: 3vh;
+	margin-bottom: 3vh;
+	height: calc(30px + 3vh);
+	box-shadow: 0 0 7px 0px black;
+	background-color: $accent-blue;
+	@extend %white-text-black-shadow;
+}
+
+//addphone.html
+.addphone-form-container-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.addphone-heading{
+	text-shadow: white 1px 1px 1px;
+	margin-bottom: 20px;
+	font-size: calc(14px + 2vw);
+}
+
+.addphone-form-container{
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0 0 15px 0px black;
+	background-color: darken($background-grey, 10);
+	input{
+		height: calc(30px + 2vh);
+		margin-top: 3vh;
+		margin-bottom: 3vh;
+		font-size: calc(14px + 1vw);
+		border: 0;
+		outline: 0;
+		background: transparent;
+		border-bottom: 2px solid $accent-blue;
+		@extend %white-text-black-shadow;
+			&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+				@extend %white-text-black-shadow;
+				color: $background-grey;
+			}
+		}
+}
+.addphone-submit-button{
+	font-size: calc(14px + 1vw);
+	margin-top: 3vh;
+	margin-bottom: 3vh;
+	height: calc(30px + 3vh);
+	box-shadow: 0 0 7px 0px black;
+	background-color: $accent-blue;
+	@extend %white-text-black-shadow;
+}
+
+//logo
+.fa-building{
+  font-size: calc(16px + 1vw);
+  color: $accent-blue;
+}
+
+.fa-building-o{
+  font-size: calc(18px + 1.5vw);
+  color: $accent-orange;
+}
+
+.fa-hospital-o{
+  color: $emergency-red;
+  font-size: calc(14px + 1.5vw);
+}
+
+.logo-container{
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.get-me-safe-logo{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.logo-icon-container{
+  display: flex;
+}
+.logo-text-container{
+  display: flex;
+  justify-content: center;
+}
+
+.get-me-safe-logo-text{
+  color: $accent-blue;
+  font-family: 'Libre Baskerville', serif;
 }
 
 

@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var cors =  require('cors')
 var index = require('./routes/index');
 var users = require('./routes/users');
+var incidents = require('./routes/incidents')
 var stormpath = require('express-stormpath');
 var app = express();
 var corsOptions = {
@@ -60,6 +61,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/incidents', incidents);
 
 
 

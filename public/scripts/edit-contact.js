@@ -19,8 +19,8 @@ $(document).ready(function() {
 	var userContacts = []
 	var userId;
 
-	$.get(`https://getmesafe.herokuapp.com/users/econtacts/${emergencyContactId}`, (data) => {
-			data.forEach((element) => { 
+	$.get(`/users/econtacts/${emergencyContactId}`, (data) => {
+			data.forEach((element) => {
 				userContacts.push(element)
 			})
 			userId = userContacts[0]['user_id']
@@ -45,12 +45,12 @@ $(document).ready(function() {
 
 		$.ajax({
 			type: "PATCH",
-			url: "https://getmesafe.herokuapp.com/users/updatecontact/",
+			url: "/users/updatecontact/"+emergencyContactId,
 			crossDomain: true,
 			data: JSON.stringify(contactObject),
 			contentType: "application/json; charset=utf-8",
 			success: function(returnValue){
-				location.href = "edit-profile-page.html?id="+userId
+				location.href = "edit-profile-page.html"
 			},
 			error: function(){
 				console.log('failure')

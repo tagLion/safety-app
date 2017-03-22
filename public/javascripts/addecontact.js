@@ -10,7 +10,6 @@ $.get('users/myid')
 $('#send').click(function(e){
   e.preventDefault()
   var econtobj = {
-    user_id: num,
     firstname: $('#fn').val(),
     lastname: $('#ln').val(),
     phone: $('#phone').val(),
@@ -19,6 +18,6 @@ $('#send').click(function(e){
   $.post('users/newecontact', econtobj)
   .then(function(data){
     console.log(data)
-    window.location = '/econtact.html'
+    window.location = '/edit-profile-page.html'
   })
 })

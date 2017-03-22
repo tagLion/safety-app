@@ -1,57 +1,80 @@
-
 @import url("reset.css");
-/* read this about this box-sizing thingy
+/* read this about this box-sizing thingy 
 https://css-tricks.com/box-sizing/*/
+.login-button, .logout-button, .about-button, .edit-profile-button, .profile-form-container h1, .edit-contact-button a, .new-econtact-button, .edit-emergency-contact-form-container input, .edit-emergency-contact-form-container input::-webkit-input-placeholder, .emergency-contact-submit-button, .add-econtact-page-add-econtact-form-container input, .add-econtact-page-add-econtact-form-container input::-webkit-input-placeholder, .add-econtact-page-submit-button, .addphone-form-container input, .addphone-form-container input::-webkit-input-placeholder, .addphone-submit-button {
+  color: white;
+  text-shadow: black 1px 1px 1px; }
+
+.delete-contact-button, .edit-contact-button, .new-econtact-button {
+  box-shadow: 0 0 15px 0px black;
+  outline: none; }
+  .delete-contact-button:active, .edit-contact-button:active, .new-econtact-button:active {
+    box-shadow: none; }
+
 body {
-  background-color: #f0f0f5;
-  background-size: cover; }
+  display: flex;
+  flex-direction: column;
+  background-color: #DEDEDE;
+  background-size: cover;
+  min-height: 100vh;
+  line-height: 1.25;
+  font-family: 'Libre Baskerville', serif;
+  color: #333333; }
 
 nav {
-  height: 20vh;
-  display: flex; }
+  height: 10vh;
+  display: flex;
+  align-items: flex-start; }
   nav ul {
     display: flex;
     justify-content: space-between;
     align-items: center; }
 
+button {
+  outline: none; }
+
 .home-link {
-  background-color: red;
+  background-color: #AA3939;
   font-size: calc(18px + 1vw); }
 
 .logo {
-  height: 20vh; }
+  height: 10vh; }
 
 .get-me-safe-button-container {
+  flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 60vh; }
+  margin-bottom: 100px; }
 
 .get-me-safe-button {
-  cursor: pointer; }
+  cursor: pointer;
+  box-shadow: 0 0 30px 0px black;
+  border-radius: 50%; }
+  .get-me-safe-button:active {
+    box-shadow: none; }
 
 .login-button {
-  height: 10vh;
+  height: 9vh;
   font-size: calc(20px + 1vw);
   font-family: 'Libre Baskerville', serif;
-  background-color: orange;
-  color: white;
-  text-shadow: black 1px 1px 1px; }
-  .logout-button {
-    height: 10vh;
-    font-size: calc(20px + 1vw);
-    font-family: 'Libre Baskerville', serif;
-    background-color: honeydew;
-    color: white;
-    text-shadow: black 1px 1px 1px; }
+  background-color: #2E882E; }
+
+.logout-button {
+  height: 9vh;
+  background-color: #AA3939;
+  font-size: calc(20px + 1vw); }
 
 .about-button {
-  height: 10vh;
+  height: 9vh;
   font-size: calc(20px + 1vw);
   font-family: 'Libre Baskerville', serif;
-  background-color: grey;
-  color: white;
-  text-shadow: black 1px 1px 1px; }
+  background-color: #AA6C39; }
+
+.edit-profile-button {
+  height: 9vh;
+  background-color: #226666;
+  font-size: calc(20px + 1vw); }
 
 .user-form-container input, .emergency-contact-form-container input {
   margin-top: 10px;
@@ -64,20 +87,22 @@ nav {
   flex-direction: column;
   align-items: center; }
   .profile-form-container h1 {
-    font-size: calc(20px + 1vw);
-    color: white;
-    text-shadow: black 1px 1px 1px; }
+    font-size: calc(20px + 1vw); }
 
 .user-form-container {
-  background-color: yellow;
+  background-color: #AA6C39;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-bottom: 50px; }
 
+.edit-profile-page-main {
+  margin-left: 20px;
+  margin-bottom: 100px; }
+
 .emergency-contact-form-container {
-  background-color: green;
+  background-color: #AA3939;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -95,20 +120,192 @@ nav {
   height: 10vh; }
 
 .profile-submit-button {
-  background-color: orange;
+  background-color: #AA6C39;
   font-size: calc(20px + 1vw); }
 
-.edit-contact-button-container {
+.edit-profile-page-emergency-contact-container {
+  margin-bottom: calc(30px + 10vh);
+  background-color: #ebebeb;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black; }
+
+.emergency-contact-heading {
+  font-size: calc(16px + .5vw); }
+
+.emergency-contact-button-container {
   display: flex;
-  justify-content: flex-end;
-  font-size: calc(20px + 1vw); }
+  justify-content: space-between;
+  width: 50%;
+  font-size: calc(16px + 1vw);
+  margin-bottom: 10px;
+  margin-top: 20px; }
 
-  
-.contacts-button {
-  height: 10vh;
-  font-size: calc(20px + 1vw);
-  font-family: 'Libre Baskerville', serif;
-  background-color: seashell;
-  color: white;
-  text-shadow: black 1px 1px 1px; }
+.delete-contact-button {
+  background-color: #AA3939;
+  width: 40%;
+  box-shadow: 0 0 7px 0px black; }
+
+.edit-contact-button {
+  background-color: #226666;
+  width: 40%;
+  box-shadow: 0 0 7px 0px black; }
+
+.new-econtact-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.new-econtact-button {
+  width: 50vw;
+  height: calc(20px + 5vh);
+  background-color: #2E882E; }
+
+.edit-contact-page-emergency-contact-container {
+  display: flex;
+  justify-content: center; }
+
+.edit-emergency-contact-form-container {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 15px 0px black;
+  background-color: #c5c5c5; }
+  .edit-emergency-contact-form-container input {
+    height: calc(30px + 2vh);
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    font-size: calc(14px + 1vw);
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 2px solid #226666; }
+    .edit-emergency-contact-form-container input::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      color: #DEDEDE; }
+
+.emergency-contact-submit-button-container {
+  display: flex;
+  justify-content: center; }
+
+.emergency-contact-submit-button {
+  font-size: calc(14px + 1vw);
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  height: calc(30px + 3vh);
+  box-shadow: 0 0 7px 0px black;
+  background-color: #226666; }
+
+.add-econtact-page-add-econtact-form-container-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.add-emergency-contact-heading {
+  font-size: calc(20px + 3vw);
+  text-shadow: white 1px 1px 1px;
+  margin-bottom: 20px; }
+
+.add-econtact-page-add-econtact-form-container {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 15px 0px black;
+  background-color: #c5c5c5; }
+  .add-econtact-page-add-econtact-form-container input {
+    height: calc(30px + 2vh);
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    font-size: calc(14px + 1vw);
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 2px solid #226666; }
+    .add-econtact-page-add-econtact-form-container input::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      color: #DEDEDE; }
+
+.add-econtact-page-submit-button-container {
+  display: flex;
+  justify-content: center; }
+
+.add-econtact-page-submit-button {
+  font-size: calc(14px + 1vw);
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  height: calc(30px + 3vh);
+  box-shadow: 0 0 7px 0px black;
+  background-color: #226666; }
+
+.addphone-form-container-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.addphone-heading {
+  text-shadow: white 1px 1px 1px;
+  margin-bottom: 20px;
+  font-size: calc(14px + 2vw); }
+
+.addphone-form-container {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 15px 0px black;
+  background-color: #c5c5c5; }
+  .addphone-form-container input {
+    height: calc(30px + 2vh);
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    font-size: calc(14px + 1vw);
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 2px solid #226666; }
+    .addphone-form-container input::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      color: #DEDEDE; }
+
+.addphone-submit-button {
+  font-size: calc(14px + 1vw);
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  height: calc(30px + 3vh);
+  box-shadow: 0 0 7px 0px black;
+  background-color: #226666; }
+
+.fa-building {
+  font-size: calc(16px + 1vw);
+  color: #226666; }
+
+.fa-building-o {
+  font-size: calc(18px + 1.5vw);
+  color: #AA6C39; }
+
+.fa-hospital-o {
+  color: #AA3939;
+  font-size: calc(14px + 1.5vw); }
+
+.logo-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
+  margin-left: 20px; }
+
+.get-me-safe-logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer; }
+
+.logo-icon-container {
+  display: flex; }
+
+.logo-text-container {
+  display: flex;
+  justify-content: center; }
+
+.get-me-safe-logo-text {
+  color: #226666;
+  font-family: 'Libre Baskerville', serif; }
+
 /*# sourceMappingURL=style.css.map */

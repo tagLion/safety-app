@@ -8,7 +8,8 @@ exports.up = function(knex) {
       i.string('end_LAT')
       i.string('end_LONG')
       i.timestamp('start_timestamp').defaultTo(knex.fn.now())
-      i.timestamp('end_timestamp').defaultTo(knex.fn.now())
+      i.timestamp('end_timestamp').defaultTo(null)
+      i.bool('is_incident')
     })
 }
 
