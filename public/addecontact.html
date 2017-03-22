@@ -2,7 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>gBlog!</title>
+    <title>Add Emergency Contact</title>
+    <script src="https://use.fontawesome.com/57a2949668.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../stylesheets/style.css">
@@ -10,21 +11,42 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   </head>
   <body>
-    <div class = "main container-fluid">
-      </div>
-      <div class="info-cont">
-        <form id="addecontact">
-          <p>email: </p><input type="text" id="email"></input>
-          <p>Phone: </p><input id="phone" type="number"></input>
-      <p>first: </p><input type="text" id="fn"></input>
-      <p>last:</p><input type="text" id="ln"></input>
-      <button id="send">Submit</button>
-    </form>
-      </div>
-    <footer class="footer"><p class="copy">gBlog!</p>
-    </footer>
+    <nav class='top-nav'>
+      <ul class = "nav-list">
+        <li>
+          <div class = "logo-container"> <a href="/index.html">   <div class = "get-me-safe-logo">
+            <div class = "logo-icon-container"><i class="fa fa-building" aria-hidden="true"></i>
+              <i class="fa fa-building-o" aria-hidden="true"></i>
+              <i class="fa fa-hospital-o" aria-hidden="true"></i>
+              <i class="fa fa-building" aria-hidden="true"></i>
+              <i class="fa fa-building-o" aria-hidden="true"></i>
+            </div>
+            <div class = "logo-text-container"></div>
+            <div class ="get-me-safe-logo-text">GetMeSafe</div>
+          </div></a>
+          
+        </div>
+      </li>
+    </ul>
+  </nav>
+  <div class = "main container-fluid">
+  </div>
+  <div class="info-cont add-econtact-page-add-econtact-form-container-container col-xs-12">
+      <h1 class="add-emergency-contact-heading">Add Emergency Contact</h1>
 
-  </body>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="../javascripts/addecontact.js"></script>
+    <form class = "add-econtact-page-add-econtact-form-container col-xs-10"id="addecontact">
+      <input type="text" id="email" placeholder="Email"></input>
+      <input id="phone" type="number" placeholder="Phone"></input>
+      <input type="text" id="fn" placeholder="First Name"></input>
+      <input type="text" id="ln" placeholder="Last Name"></input>
+    </form>
+      <div class = "add-econtact-page-submit-button-container col-xs-12">
+      <button class = "add-econtact-page-submit-button col-xs-10" id="send">Submit</button>
+      </div>
+  </div>
+  <footer class="footer"><p class="copy"></p>
+</footer>
+</body>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="../javascripts/addecontact.js"></script>
 </html>
