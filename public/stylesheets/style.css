@@ -1,7 +1,7 @@
 @import url("reset.css");
-/* read this about this box-sizing thingy 
+/* read this about this box-sizing thingy
 https://css-tricks.com/box-sizing/*/
-.login-button, .logout-button, .about-button, .profile-form-container h1, .edit-contact-button a, .new-econtact-button, .edit-emergency-contact-form-container input, .edit-emergency-contact-form-container input::-webkit-input-placeholder, .emergency-contact-submit-button {
+.login-button, .logout-button, .about-button, .edit-profile-button, .profile-form-container h1, .edit-contact-button a, .new-econtact-button, .edit-emergency-contact-form-container input, .edit-emergency-contact-form-container input::-webkit-input-placeholder, .emergency-contact-submit-button {
   color: white;
   text-shadow: black 1px 1px 1px; }
 
@@ -70,7 +70,11 @@ button {
   font-size: calc(20px + 1vw);
   font-family: 'Libre Baskerville', serif;
   background-color: #226666; }
-
+  .edit-profile-button {
+    height: 9vh;
+    font-size: calc(20px + 1vw);
+    font-family: 'Libre Baskerville', serif;
+    background-color: #226666; }
 .user-form-container input, .emergency-contact-form-container input {
   margin-top: 10px;
   margin-bottom: 10px;
