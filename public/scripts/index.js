@@ -14,10 +14,15 @@ $(document).ready(function(){
           console.log(data)
           alert('Friends in Danger: '+JSON.stringify(data))
         })
+        //this happens if logged in
+         console.log('logged in')
       })
       .catch(function(err){
         window.location = '/addphone.html'
       })
+    } else{
+      //if not logged it
+      console.log('not logged int')
     }
 })
 })
