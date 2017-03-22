@@ -1,7 +1,7 @@
 @import url("reset.css");
 /* read this about this box-sizing thingy 
 https://css-tricks.com/box-sizing/*/
-.login-button, .logout-button, .about-button, .edit-profile-button, .profile-form-container h1, .edit-contact-button a, .new-econtact-button, .edit-emergency-contact-form-container input, .edit-emergency-contact-form-container input::-webkit-input-placeholder, .emergency-contact-submit-button, .add-econtact-page-add-econtact-form-container input, .add-econtact-page-add-econtact-form-container input::-webkit-input-placeholder, .add-econtact-page-submit-button, .addphone-form-container input, .addphone-form-container input::-webkit-input-placeholder, .addphone-submit-button {
+.login-button, .logout-button, .about-button, .edit-profile-button, .profile-form-container h1, .edit-contact-button a, .new-econtact-button, .edit-emergency-contact-form-container input, .edit-emergency-contact-form-container input::-webkit-input-placeholder, .emergency-contact-submit-button, .add-econtact-page-add-econtact-form-container input, .add-econtact-page-add-econtact-form-container input::-webkit-input-placeholder, .add-econtact-page-submit-button, .addphone-form-container input, .addphone-form-container input::-webkit-input-placeholder, .addphone-submit-button, .abort-safe-button-container button, .next-prev-button-container button {
   color: white;
   text-shadow: black 1px 1px 1px; }
 
@@ -308,9 +308,39 @@ button {
   color: #226666;
   font-family: 'Libre Baskerville', serif; }
 
+.abort-safe-button-container button, .next-prev-button-container button {
+  height: calc(20px + 5vh);
+  font-size: calc(12px + 3vw); }
+
+#map {
+  height: 40vh;
+  width: 100vw;
+  background-color: grey; }
+
+.abort-safe-button-container {
+  display: flex;
+  justify-content: space-between; }
+  .abort-safe-button-container #abort-button {
+    background-color: #AA3939; }
+  .abort-safe-button-container #safe-button {
+    background-color: #2E882E; }
+
+.next-prev-button-container {
+  display: flex;
+  justify-content: space-between; }
+  .next-prev-button-container button {
+    background-color: #226666; }
+
+.main-page-heading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(14px + 2vw);
+  margin-bottom: 30px;
+  margin-top: 30px; }
+
 .adp {
-  font-size: calc(20px + 3vw);
-  color: red;
-  background-color: yellow; }
+  font-size: calc(16px + 2vw); }
 
 /*# sourceMappingURL=style.css.map */
