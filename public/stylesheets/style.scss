@@ -250,7 +250,7 @@ button{
 	font-size: calc(14px + 1vw);
 	margin-top: 3vh;
 	margin-bottom: 3vh;
-	height: calc(30px + 2vh);
+	height: calc(30px + 3vh);
 	box-shadow: 0 0 7px 0px black;
 	background-color: $accent-blue;
 	@extend %white-text-black-shadow;
