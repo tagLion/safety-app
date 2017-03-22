@@ -21,7 +21,6 @@
     <button type="button" id="safe-button">I AM SAFE</button>
     <button type="button" id="abort-button">ABORT</button>
     <h1>Google Maps And Places Page</h1>
-    <h4>Our Best Guess</h4>
 
     <div id="map"></div>
 
@@ -31,7 +30,6 @@
     var num = 1
     var int
     var start
-    var infoWindow
     var directionsDisplay = null
     var pos
     var incidentid
@@ -104,11 +102,10 @@
   calculateAndDisplayRoute(directionsService, directionsDisplay, myLocation, nearestSafeSpaceCoords);
 
 }
-function getPos(){
-console.log('test')
-if (navigator.geolocation){
+function getpos (){
+
+
 navigator.geolocation.getCurrentPosition(function(position) {
-  console.log(position)
   pos = {
     lat: position.coords.latitude,
     lng: position.coords.longitude
@@ -118,50 +115,11 @@ navigator.geolocation.getCurrentPosition(function(position) {
     lng: pos.lng
   }
   console.log(pos)
-  updateDirs()
-  if ( start == undefined){
-  $.ajax({
-    method: 'PATCH',
-    url: '/incidents/'+ incidentid,
-    data: {
-      start_LAT: pos.lat,
-      start_LONG: pos.lng,
-      is_incident: true
-    }
-  })
-  .done(function(data){
-    console.log('PATCHed initial coordinates')
-    start = true
-    // $('#bottom-panel').empty()
-    // initMap2()
-  })
-  }
   $.post('/incidents/coordinates', {LAT: pos.lat, LONG: pos.lng, incident_id: incidentid, user_id: num} )
   .done(function(data){
     console.log('location POST')
-    if ( start == undefined){
-    $.ajax({
-      method: 'PATCH',
-      url: '/incidents/'+ incidentid,
-      data: {
-        start_LAT: pos.lat,
-        start_LONG: pos.lng,
-        is_incident: true
-      }
-    })
-    .done(function(data){
-      console.log('POSTed initial coordinates')
-      start = true
-      // $('#bottom-panel').empty()
-      // initMap2()
-    })
-    }
   })
-})
-}
-}
-function updateDirs() {
-var request = {
+  var request = {
 location: pos,
 openNow: true,
 rankBy: google.maps.places.RankBy.DISTANCE,
@@ -182,6 +140,7 @@ types: ['accounting',
 'car_dealer',
 'car_rental',
 'car_repair',
+'car_wash',
 'casino',
 'church',
 'city_hall',
@@ -275,8 +234,8 @@ map: map
 directionsService = new google.maps.DirectionsService
 if (directionsDisplay !== null){directionsDisplay.setMap(null)}
 directionsDisplay = new google.maps.DirectionsRenderer({
-map: map
-})
+  map: map
+}),
 //    markerA = new google.maps.Marker({
 //    position: myLocation,
 //  title: "Your Location",
@@ -287,6 +246,24 @@ map: map
 // get route from myLocation to nearestSafeSpaceCoords
 calculateAndDisplayRoute(directionsService, directionsDisplay, myLocation, nearestSafeSpaceCoords);
 }
+if ( start == undefined){
+  $.ajax({
+    method: 'PATCH',
+    url: '/incidents/'+ incidentid,
+    data: {
+      start_LAT: pos.lat,
+      start_LONG: pos.lng,
+      is_incident: true
+    }
+  })
+  .done(function(data){
+    console.log('POSTed initial coordinates')
+    start = true
+    // $('#bottom-panel').empty()
+    // initMap2()
+  })
+}
+})
 }
 //     $.ajax({
 //     type: 'GET',
@@ -319,7 +296,7 @@ calculateAndDisplayRoute(directionsService, directionsDisplay, myLocation, neare
           center: {lat: 39.397, lng: -104.644},
           zoom: 6
         });
-        infoWindow = new google.maps.InfoWindow({map: map});
+        var infoWindow = new google.maps.InfoWindow({map: map});
 
           $.get('/users/myid')
         	.then(function(data){
@@ -331,8 +308,9 @@ calculateAndDisplayRoute(directionsService, directionsDisplay, myLocation, neare
             console.log(data)
             incidentid = data[0].id
             console.log('incident posted')
-              getPos()
-              int = setInterval(function(){getPos()}, 20000)
+              getpos()
+              int = setInterval(function(){getpos()}, 20000)
+              console.log(pos)
 
         })
         })
@@ -370,8 +348,7 @@ calculateAndDisplayRoute(directionsService, directionsDisplay, myLocation, neare
   }
     </script>
 
-<script async="defer" type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO3Df22mxHGQXw5DPlrCyJ-DeW074HUUo&libraries=places&callback=initMap"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWswS_LVzU1y8k-zYxee3zijchYq6b3fM&libraries=places&callback=initMap"></script>
     <script src="./javascripts/main.js"></script>
   </body>
 </html>
-<!-- AIzaSyBEom4suZQV-_PBOgPe6JmNAuD6j1sBvy4 -->

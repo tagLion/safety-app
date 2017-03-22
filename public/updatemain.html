@@ -20,8 +20,7 @@
   <body>
     <button type="button" id="safe-button">I AM SAFE</button>
     <button type="button" id="abort-button">ABORT</button>
-    <h1>Google Maps And Places Page</h1>
-    <h4>Our Best Guess</h4>
+    <h1>Our Best Guess</h1>
 
     <div id="map"></div>
 
@@ -108,10 +107,17 @@ function getPos(){
 console.log('test')
 if (navigator.geolocation){
 navigator.geolocation.getCurrentPosition(function(position) {
+console.log(position.coords.latitude+ position.coords.longitude);
+}, function(err){
+  console.log(err)
+})}
+
+  $.post('https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBEom4suZQV-_PBOgPe6JmNAuD6j1sBvy4')
+  .then(function(position) {
   console.log(position)
   pos = {
-    lat: position.coords.latitude,
-    lng: position.coords.longitude
+    lat: position.location.lat,
+    lng: position.location.lng
   }
   myLocation = {
     lat: pos.lat,
@@ -158,7 +164,6 @@ navigator.geolocation.getCurrentPosition(function(position) {
     }
   })
 })
-}
 }
 function updateDirs() {
 var request = {
