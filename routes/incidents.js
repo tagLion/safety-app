@@ -24,15 +24,16 @@ router.get('/endincident/:id', (req, res) => {
     })
 })
 router.post('/', stormpath.getUser, (req, res) => {
-  var userID = req.body.user_id
-  knex.select('id', 'firstname', 'lastname').from('user').where('email', res.locals.user.email)
+  var filler = 'test'
+  if (req.user){ filler = req.user.email}
+  knex.select('id', 'firstname', 'lastname').from('user').where('email', filler)
   .then(result =>{
     if (result.length > 0){
     var fn = result[0].firstname
     var ln = result[0].lastname
-    userID = result[0].id
+    var userID = result[0].id
     console.log(result[0])
-  } else {userID = 1}
+  } else {var userID = 1}
     knex('incident').insert({user_id:userID}).returning(['id'])
     .then(results => {
       res.send(results)

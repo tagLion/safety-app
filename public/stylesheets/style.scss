@@ -89,7 +89,7 @@ button{
 }
 .logout-button{
 	height: 9vh;
-	background-color: $accent-orange;
+	background-color: $emergency-red;
 	font-size: calc(20px + 1vw);
 	@extend %white-text-black-shadow;
 }
@@ -98,7 +98,13 @@ button{
 	height: 9vh;
 	font-size: calc(20px + 1vw);
 	font-family: 'Libre Baskerville', serif;
+	background-color: $accent-orange;
+	@extend %white-text-black-shadow;
+}
+.edit-profile-button{
+	height: 9vh;
 	background-color: $accent-blue;
+	font-size: calc(20px + 1vw);
 	@extend %white-text-black-shadow;
 }
 
