@@ -13,41 +13,39 @@
 	</head>
 	<body>
 		<nav class='top-nav'>
-			<ul class = "nav-list col-xs-12">
-				<li><img class = "logo" src="logo.png"></li>
-				<li class= "home-link"><a href="index.html">Home</a></li>
-			</ul>
-		</nav>
-		<!-- <form id="addphone">
-	    <p>We still need your phone number</p>
-	<p>Phone: </p><input id="phone" type="number"></input>
-	<button id="send">Submit</button>
-	</form> -->
+			<ul class = "nav-list">
+				<li>
+					<div class = "logo-container"> <a href="/index.html">		<div class = "get-me-safe-logo">
+						<div class = "logo-icon-container"><i class="fa fa-building" aria-hidden="true"></i>
+							<i class="fa fa-building-o" aria-hidden="true"></i>
+							<i class="fa fa-hospital-o" aria-hidden="true"></i>
+							<i class="fa fa-building" aria-hidden="true"></i>
+							<i class="fa fa-building-o" aria-hidden="true"></i>
+						</div>
+						<div class = "logo-text-container"></div>
+						<div class ="get-me-safe-logo-text">GetMeSafe</div>
+					</div></a>
+					
+				</div>
+			</li>
+		</ul>
+	</nav>
+		<script id="emergency-contact-template" type="text/x-handlebars-template">	
+		<div class = "edit-contact-page-emergency-contact-container col-xs-12">
 
-		<div class = "profile-form-container">
-				<script id="emergency-contact-template" type="text/x-handlebars-template">
-					<div class = "edit-emergency-contact-form-container">
-						<input class = "emergency-contact-firstname-input" type="text" name="firstname" value={{firstname}}>
+			<div class = "edit-emergency-contact-form-container col-xs-10">
+					<input class = "emergency-contact-firstname-input" type="text" name="firstname" value={{firstname}} placeholder="First Name">
+					<input class = "emergency-contact-lastname-input" type="text" name="lastname" value={{lastname}} placeholder="Last Name">
+					<input class = "emergency-contact-phone-input" type="text" name="phone" value={{phone}} placeholder="Phone">
+					<input class = "emergency-contact-email-input" type="text" name="email" value={{email}} placeholder="Email">
+			</div>	
+			</div>
 
-						<input class = "emergency-contact-lastname-input" type="text" name="lastname" value={{lastname}}>
-
-						<input class = "emergency-contact-phone-input" type="text" name="phone" value={{phone}}>
-
-						<input class = "emergency-contact-email-input" type="text" name="email" value={{email}}>
-					</div>
-				</script>
-		</div>
-
-		<div class="emergency-contacts-placeholder"></div>
-
-
-
-
-
-
-		<div class = "emergency-contact-submit-button-container col-xs-10">
-			<button class = "emergency-contact-submit-button col-xs-10">Submit</button>
-		</div>
+		</script>
+	<div class="emergency-contacts-placeholder"></div>
+	<div class = "emergency-contact-submit-button-container col-xs-12">
+		<button class = "emergency-contact-submit-button col-xs-10">Submit</button>
 	</div>
+</div>
 </body>
 </html>
