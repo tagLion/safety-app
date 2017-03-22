@@ -9,11 +9,11 @@ $(document).ready(function(){
         if (data.length < 1){
           window.location = '/addphone.html'
         }
-        $.get('/friendsInDanger')
-        .then(function(data){
-          console.log(data)
-          alert('Friends in Danger: '+JSON.stringify(data))
-        })
+        // $.get('/friendsInDanger')
+        // .then(function(data){
+        //   console.log(data)
+        //   alert('Friends in Danger: '+JSON.stringify(data))
+        // })
         //this happens if logged in
          console.log('logged in')
          $(".login-button").hide()
