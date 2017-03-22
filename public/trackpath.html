@@ -73,7 +73,8 @@
           $.get(`https://getmesafe.herokuapp.com/incidents/endincident/${incidentID}`, (incidentOVER) => {
               if (incidentOVER) {
                 clearInterval(getData);
-                $('.show-safe').css('display', 'block')
+                $('.show-safe').css('display', 'flex')
+                $('.show-safe').css('justify-content', 'center')
               }
             })
           }, 5000)
