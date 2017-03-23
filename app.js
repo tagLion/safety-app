@@ -35,10 +35,7 @@ function ensureSecure(req, res, next){
   };
   res.redirect('https://'+req.hostname+req.url); // handle port numbers if you need non defaults
 };
-if (process.env.NODE_ENV != 'development'){
-app.use('*', ensureSecure)
-}
-app.use(cors(corsOptions))
+
 app.use(stormpath.init(app, {
   postLogoutHandler: function (account, req, res, next) {
     console.log('User', account.email, 'just logged out!');
@@ -66,6 +63,10 @@ logout: {
     }
 }
 }));
+if (process.env.NODE_ENV != 'development'){
+app.use('*', ensureSecure)
+}
+app.use(cors(corsOptions))
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
