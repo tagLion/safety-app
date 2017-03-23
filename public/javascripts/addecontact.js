@@ -19,7 +19,7 @@ $('#send').click(function(e){
       if (!validateEmail(email)) {
         alert("Not a valid e-mail address");
       } else {
-      alert("Thank you for signing up!") 
+      alert("eContact added!") 
       e.preventDefault()
       var econtobj = {
         firstname: $('#fn').val(),
