@@ -45,10 +45,11 @@ $(document).ready(function() {
 		function validate() {
 			var email = $(".emergency-contact-email-input").val();
 			if (!validateEmail(email)) {
-				alert("Not a valid e-mail address");
-			} else {
-				alert("Thank you for signing up!")
+				$(".emergency-contact-email-input").css("border-color", "red")
+				$(".emergency-contact-email-input").val('');
+				$(".emergency-contact-email-input").attr('placeholder', 'Please Enter a Valid Email');
 
+			} else {
 				var contactObject = {}
 				contactObject['id'] = emergencyContactId;
 				contactObject['firstname'] = $(".emergency-contact-firstname-input").val();
