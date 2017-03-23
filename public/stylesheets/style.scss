@@ -36,7 +36,7 @@ body{
 	flex-direction: column;
 	background-color: $background-grey;
 	background-size: cover;
-	min-height: 100vh;
+	height: 100vh;
  	line-height: 1.25;
   	font-family: 'Libre Baskerville', serif;
   	color: $text-grey;
@@ -46,7 +46,7 @@ nav{
 	height: $nav-height;
 	display: flex;
 	align-items: flex-start;
-	margin-bottom: 50px;
+	margin-bottom: 100px;
 	ul{
 		display: flex;
 		justify-content: space-between;
@@ -89,21 +89,21 @@ button{
 
 }
 .logout-button{
-	height: 9vh;
+	height: 6vh;
 	background-color: $emergency-red;
 	font-size: calc(20px + 1vw);
 	@extend %white-text-black-shadow;
 }
 
 .about-button{
-	height: 9vh;
+	height: 6vh;
 	font-size: calc(20px + 1vw);
 	font-family: 'Libre Baskerville', serif;
 	background-color: $accent-orange;
 	@extend %white-text-black-shadow;
 }
 .edit-profile-button{
-	height: 9vh;
+	height: 6vh;
 	background-color: $accent-blue;
 	font-size: calc(20px + 1vw);
 	@extend %white-text-black-shadow;
@@ -138,8 +138,12 @@ button{
 }
 
 .edit-profile-page-main{
+	position: absolute;
+	top:$nav-height;
 	width: 100vw;
-	margin-bottom: 100px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
 }
 
 .emergency-contact-form-container{
