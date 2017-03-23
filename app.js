@@ -58,14 +58,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(function forceHttps(req, res, next) {
-  // Don't allow user to hit Heroku now that we have a domain
-  var host = req.get('Host');
-  if (host === 'getmesafe.herokuapp.com') {
-    return res.redirect(301, 'https://getmesafe.herokuapp.com' + req.originalUrl);
-  }
-  return next();
-});
+
 app.use('/', index);
 app.use('/users', users);
 app.use('/incidents', incidents);
