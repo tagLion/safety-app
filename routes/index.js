@@ -7,7 +7,7 @@ var stormpath = require('express-stormpath');
 /* GET home page. */
 
 router.get('/', function(req, res, next) {
-  res.sendFile('../public/index.html')
+  res.redirect('https://getmesafe.herokuapp.com/index.html')
 });
 router.get('/addecontact.html', stormpath.loginRequired, function(req, res, next) {
   res.sendFile('../public/addecontact.html')
