@@ -8,16 +8,36 @@ $.get('users/myid')
 
 
 $('#send').click(function(e){
-  e.preventDefault()
-  var econtobj = {
-    firstname: $('#fn').val(),
-    lastname: $('#ln').val(),
-    phone: $('#phone').val(),
-    email: $('#email').val()
-  }
-  $.post('users/newecontact', econtobj)
-  .then(function(data){
-    console.log(data)
-    window.location = '/edit-profile-page.html'
-  })
+
+
+  function validateEmail(email) {
+      var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    }
+    function validate() {
+      var email = $("#email").val();
+      if (!validateEmail(email)) {
+        alert("Not a valid e-mail address");
+      } else {
+      alert("Thank you for signing up!") 
+      e.preventDefault()
+      var econtobj = {
+        firstname: $('#fn').val(),
+        lastname: $('#ln').val(),
+        phone: $('#phone').val(),
+        email: $('#email').val()
+      }
+      $.post('users/newecontact', econtobj)
+        .then(function(data) {
+          console.log(data)
+          window.location = '/edit-profile-page.html'
+        })
+      }
+    }
+    validate()
+
+
+
+
+
 })

@@ -20,42 +20,59 @@ $(document).ready(function() {
 	var userId;
 
 	$.get(`/users/econtacts/${emergencyContactId}`, (data) => {
-			data.forEach((element) => {
-				userContacts.push(element)
-			})
-			userId = userContacts[0]['user_id']
-			console.log("userId is " + userId)
-			console.log(userContacts)
-
-			var source = $("#emergency-contact-template").html();
-			var template = Handlebars.compile(source);
-
-			userContacts.forEach((element) => {
-				var html = template(element)
-				$('.emergency-contacts-placeholder').append(html)
-			})
+		data.forEach((element) => {
+			userContacts.push(element)
 		})
+		userId = userContacts[0]['user_id']
+		console.log("userId is " + userId)
+		console.log(userContacts)
+
+		var source = $("#emergency-contact-template").html();
+		var template = Handlebars.compile(source);
+
+		userContacts.forEach((element) => {
+			var html = template(element)
+			$('.emergency-contacts-placeholder').append(html)
+		})
+	})
 	$(".emergency-contact-submit-button").on("click", () => {
-		var contactObject = {}
-		contactObject['id'] = emergencyContactId;
-		contactObject['firstname'] = $(".emergency-contact-firstname-input").val();
-		contactObject['lastname'] = $(".emergency-contact-lastname-input").val();
-		contactObject['phone'] = $(".emergency-contact-phone-input").val();
-		contactObject['email'] = $(".emergency-contact-email-input").val();
 
-		$.ajax({
-			type: "PATCH",
-			url: "/users/updatecontact/"+emergencyContactId,
-			crossDomain: true,
-			data: JSON.stringify(contactObject),
-			contentType: "application/json; charset=utf-8",
-			success: function(returnValue){
-				location.href = "edit-profile-page.html"
-			},
-			error: function(){
-				console.log('failure')
+		function validateEmail(email) {
+			var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+			return re.test(email);
+		}
+
+		function validate() {
+			var email = $(".emergency-contact-email-input").val();
+			if (!validateEmail(email)) {
+				alert("Not a valid e-mail address");
+			} else {
+				alert("Thank you for signing up!")
+
+				var contactObject = {}
+				contactObject['id'] = emergencyContactId;
+				contactObject['firstname'] = $(".emergency-contact-firstname-input").val();
+				contactObject['lastname'] = $(".emergency-contact-lastname-input").val();
+				contactObject['phone'] = $(".emergency-contact-phone-input").val();
+				contactObject['email'] = $(".emergency-contact-email-input").val();
+
+				$.ajax({
+					type: "PATCH",
+					url: "/users/updatecontact/" + emergencyContactId,
+					crossDomain: true,
+					data: JSON.stringify(contactObject),
+					contentType: "application/json; charset=utf-8",
+					success: function(returnValue) {
+						location.href = "edit-profile-page.html"
+					},
+					error: function() {
+						console.log('failure')
+					}
+				})
 			}
-		})
+		}
+		validate()
+
 	})
 
 });
