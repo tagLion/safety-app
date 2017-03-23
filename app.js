@@ -57,12 +57,12 @@ web: {
 idSite: {
 enabled: true,
 uri: '/idSiteResult', // default setting
-nextUri: 'https://getmesafe.herokuapp.com'
+nextUri: '/'
 },
 logout: {
       enabled: true,
       uri: '/logout',
-      nextUri: 'https://getmesafe.herokuapp.com'
+      nextUri: '/'
     }
 }
 }));
