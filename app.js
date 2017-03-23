@@ -17,6 +17,27 @@ var corsOptions = {
 
 require('dotenv').config()
 var PORT = process.env.PORT || 3000
+
+// view engine setup
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'pug');
+
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+function ensureSecure(req, res, next){
+  if(req.headers["x-forwarded-proto"] === "https"){
+  // OK, continue
+  return next();
+  };
+  res.redirect('https://'+req.hostname+req.url); // handle port numbers if you need non defaults
+};
+if (process.env.NODE_ENV != 'development'){
+app.use('*', ensureSecure)
+}
 app.use(cors(corsOptions))
 app.use(stormpath.init(app, {
   postLogoutHandler: function (account, req, res, next) {
@@ -45,29 +66,8 @@ logout: {
     }
 }
 }));
-
-// view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'pug');
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-function ensureSecure(req, res, next){
-  if(req.headers["x-forwarded-proto"] === "https"){
-  // OK, continue
-  return next();
-  };
-  res.redirect('https://'+req.hostname+req.url); // handle port numbers if you need non defaults
-};
-if (process.env.NODE_ENV != 'development'){
-app.all('*', ensureSecure)
-}
 app.use('/', index);
 app.use('/users', users);
 app.use('/incidents', incidents);
