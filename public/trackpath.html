@@ -39,7 +39,7 @@
 
             $.get(`/users/primary/${personID}`, (name) => {
               console.log(name[0]["firstname"])
-              $('.track-name').val(name[0]["firstname"])
+              $('.track-name').text(name[0]["firstname"])
             })
 
             initSet = {lat:parseFloat(firstMark[0]["LAT"]) , lng:parseFloat(firstMark[0]["LONG"])}
