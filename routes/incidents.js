@@ -11,10 +11,12 @@ var domain = process.env.DOMAIN;
 var nodemailer = require('nodemailer');
 router.get('/:id/:key', (req, res) => {
 
+
   var incidentID = req.params.id
   var key = req.params.key
   console.log(key + incidentID)
-  knex('location').where('incident_id', incidentID).join('incident', 'incident.id', 'location.incident_id').andWhere('key', key).select('LAT', 'LONG')
+  knex('location').where('incident_id', incidentID).join('incident', 'incident.id', 'location.incident_id').andWhere('key', key).select('LAT', 'LONG', 'user_id')
+
     .then(userLocations => {
       if (userLocations.length > 0){
       res.send(userLocations)
