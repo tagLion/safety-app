@@ -8,7 +8,7 @@ var client = require('twilio')(process.env.TWI1, process.env.TWI2)
 router.get('/:id', (req, res) => {
   var incidentID = req.params.id
 
-  knex('location').where('incident_id', incidentID).select('LAT', 'LONG')
+  knex('location').where('incident_id', incidentID).select('LAT', 'LONG', 'user_id')
     .then(userLocations => {
       res.send(userLocations)
     })

@@ -24,14 +24,20 @@
 
       var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
       var labelIndex = 0;
+      var username;
 
       function initialize() {
         var initSet = {};
         var map;
 
         $.get(`https://getmesafe.herokuapp.com/incidents/${incidentID}`, (firstMark) => {
-          console.log(parseFloat(firstMark[0]["LAT"]));
-          console.log(parseFloat(firstMark[0]["LONG"]));
+
+            var personID = firstMark[0]["user_id"]
+            
+            $.get(`https://getmesafe.herokuapp.com/users/primary/${personID}`, (name) => {
+              console.log(name[0]["firstname"])
+              $('.track-name').insert(name[0]["firstname"])
+            })
 
             initSet = {lat:parseFloat(firstMark[0]["LAT"]) , lng:parseFloat(firstMark[0]["LONG"])}
 
@@ -49,6 +55,7 @@
         var GetLocation = function() {
           var getData = setInterval(function() {
             $.get(`https://getmesafe.herokuapp.com/incidents/${incidentID}`, (data) => {
+
 
             addMarker({lat:parseFloat(data[0]["LAT"]) , lng:parseFloat(data[0]["LONG"])}, map)
 
@@ -97,7 +104,7 @@
     </script>
   </head>
   <body>
-    <h1 class="header-track">Track You Friend</h1>
+    <h1 class="header-track">Tracking Your Friend<span class="track-name"></span></h1>
     <h2 class="show-safe">Your Friend is Safe!</h2>
     <div id="map"></div>
   </body>
