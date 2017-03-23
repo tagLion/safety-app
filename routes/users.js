@@ -50,7 +50,7 @@ router.get('/allecontacts', stormpath.groupsRequired('admin'), (req, res) => {
 
 router.get('/econtactbyuser/:id', stormpath.loginRequired, (req, res) => {
   var econtactsForUser = req.params.id
-  knex('eContact').where('user_id', econtactsForUser)
+  knex('eContact').join('user', 'user.id', 'user_id').where({'user_id': econtactsForUser, 'user.email': res.locals.user.email}).select('eContact.id', 'eContact.user_id', 'eContact.firstname', 'eContact.lastname', 'eContact.phone', 'eContact.email')
     .then(allUserContacts => {
       res.send(allUserContacts)
     })
