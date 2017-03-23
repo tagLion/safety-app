@@ -26,14 +26,14 @@ router.get('/myid', stormpath.getUser, (req, res)=>{
 }
 })
 
-router.get('/primary', (req, res) => {
+router.get('/primary', stormpath.groupsRequired('admin'), (req, res) => {
   knex('user')
     .then(users => {
       res.send(users)
     })
 })
 
-router.get('/primary/:id', (req, res) => {
+router.get('/primary/:id', stormpath.groupsRequired('admin'), (req, res) => {
   var userID = req.params.id
   knex('user').where('id', userID)
     .then(oneUser => {
@@ -41,7 +41,7 @@ router.get('/primary/:id', (req, res) => {
     })
 })
 
-router.get('/allecontacts', (req, res) => {
+router.get('/allecontacts', stormpath.groupsRequired('admin'), (req, res) => {
   knex('eContact')
     .then(allcontacts => {
       res.send(allcontacts)
@@ -113,11 +113,17 @@ router.patch('/updatecontact/:id', stormpath.loginRequired, (req, res) => {
 })
 })
 
-router.delete('/removecontact/:id', (req, res) => {
+router.delete('/removecontact/:id', stormpath.loginRequired, (req, res) => {
+  knex.select('id').from('user').where('email', res.locals.user.email)
+  .then(data=>{
   var deleteUserID = req.params.id
-  knex('eContact').where('id', deleteUserID).del()
+  knex('eContact').where('id', deleteUserID).andWhere('user_id', data[0].id).del()
     .then(result => {
       res.send(200)
+    })
+    .catch(err=>{
+      res.sendStatus(404)
+    })
     })
 })
 

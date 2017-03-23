@@ -30,6 +30,7 @@
 <div id = "bottom-panel"></div>
     <script>
     var map
+    var key
     var skips = 0
     var num = 1
     var int
@@ -127,7 +128,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
   if ( start == undefined){
   $.ajax({
     method: 'PATCH',
-    url: '/incidents/'+ incidentid,
+    url: '/incidents/'+ incidentid + '/'+key,
     data: {
       start_LAT: pos.lat,
       start_LONG: pos.lng,
@@ -141,13 +142,13 @@ navigator.geolocation.getCurrentPosition(function(position) {
     // initMap2()
   })
   }
-  $.post('/incidents/coordinates', {LAT: pos.lat, LONG: pos.lng, incident_id: incidentid, user_id: num} )
+  $.post('/incidents/coordinates/'+incidentid+'/'+key, {LAT: pos.lat, LONG: pos.lng, incident_id: incidentid, user_id: num} )
   .done(function(data){
     console.log('location POST')
     if ( start == undefined){
     $.ajax({
       method: 'PATCH',
-      url: '/incidents/'+ incidentid,
+      url: '/incidents/'+ incidentid + '/'+ key,
       data: {
         start_LAT: pos.lat,
         start_LONG: pos.lng,
@@ -328,6 +329,7 @@ calculateAndDisplayRoute(directionsService, directionsDisplay, myLocation, neare
           .then(function(data){
             console.log(data)
             incidentid = data[0].id
+            key = data[0].key
             console.log('incident posted')
               getPos()
               int = setInterval(function(){getPos()}, 10000)
@@ -338,7 +340,7 @@ calculateAndDisplayRoute(directionsService, directionsDisplay, myLocation, neare
       clearInterval(int)
       $.ajax({
         method: 'PATCH',
-        url: '/incidents/'+incidentid,
+        url: '/incidents/'+incidentid+'/'+key,
         data: {
           end_LAT: pos.lat,
           end_LONG: pos.lng,
@@ -354,7 +356,7 @@ calculateAndDisplayRoute(directionsService, directionsDisplay, myLocation, neare
       clearInterval(int)
       $.ajax({
         method: 'PATCH',
-        url: '/incidents/'+incidentid,
+        url: '/incidents/'+incidentid +'/'+key,
         data: {
           end_LAT: pos.lat,
           end_LONG: pos.long,

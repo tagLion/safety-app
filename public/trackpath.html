@@ -20,8 +20,10 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6l6xQSaRk1QLgZB4dBVAPwuLSl6Z1ebQ"></script>
     <script>
 
-      var incidentID = decodeURIComponent(window.location.search).split("=")[1]
-
+      var incidentID = parseInt(decodeURIComponent(window.location.search).split("=")[1])
+      console.log(incidentID)
+      var keyid = decodeURIComponent(window.location.search).split("=")[2]
+      console.log(keyid)
       var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
       var labelIndex = 0;
 
@@ -29,7 +31,7 @@
         var initSet = {};
         var map;
 
-        $.get(`https://getmesafe.herokuapp.com/incidents/${incidentID}`, (firstMark) => {
+        $.get(`/incidents/${incidentID}/${keyid}`, (firstMark) => {
           console.log(parseFloat(firstMark[0]["LAT"]));
           console.log(parseFloat(firstMark[0]["LONG"]));
 
@@ -48,7 +50,7 @@
 
         var GetLocation = function() {
           var getData = setInterval(function() {
-            $.get(`https://getmesafe.herokuapp.com/incidents/${incidentID}`, (data) => {
+            $.get(`/incidents/${incidentID}/${keyid}`, (data) => {
 
             addMarker({lat:parseFloat(data[0]["LAT"]) , lng:parseFloat(data[0]["LONG"])}, map)
 
@@ -70,7 +72,7 @@
                   flightPath.setMap(map);
               }
             })
-          $.get(`https://getmesafe.herokuapp.com/incidents/endincident/${incidentID}`, (incidentOVER) => {
+          $.get(`/incidents/endincident/${incidentID}`, (incidentOVER) => {
               if (incidentOVER) {
                 clearInterval(getData);
                 $('.show-safe').css('display', 'flex')

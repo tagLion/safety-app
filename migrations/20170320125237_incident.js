@@ -10,6 +10,7 @@ exports.up = function(knex) {
       i.timestamp('start_timestamp').defaultTo(knex.fn.now())
       i.timestamp('end_timestamp').defaultTo(null)
       i.bool('is_incident')
+      i.string('key')
     })
 }
 
