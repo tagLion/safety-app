@@ -5,6 +5,7 @@ var knex = require('../db/knex.js')
 
 var stormpath = require('express-stormpath');
 /* GET home page. */
+
 router.get('/', function(req, res, next) {
   res.sendFile('../public/index.html')
 });

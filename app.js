@@ -36,12 +36,12 @@ web: {
 idSite: {
 enabled: true,
 uri: '/idSiteResult', // default setting
-nextUri: '/'
+nextUri: 'https://getmesafe.herokuapp.com'
 },
 logout: {
       enabled: true,
       uri: '/logout',
-      nextUri: '/'
+      nextUri: 'https://getmesafe.herokuapp.com'
     }
 }
 }));
@@ -58,7 +58,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+app.get('*',function(req,res){
+    res.redirect('https://getmesafe.herokuapp.com'+req.url)
+  })
 app.use('/', index);
 app.use('/users', users);
 app.use('/incidents', incidents);
