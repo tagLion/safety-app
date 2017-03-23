@@ -325,7 +325,8 @@ button {
 #map {
   height: 40vh;
   width: 100vw;
-  background-color: grey; }
+  background-color: grey;
+  margin-top: 50px; }
 
 .abort-safe-button-container {
   display: flex;
