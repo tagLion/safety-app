@@ -72,14 +72,14 @@
                   flightPath.setMap(map);
               }
             })
-          $.get(`/incidents/endincident/${incidentID}`, (incidentOVER) => {
+          $.get(`/incidents/${incidentID}`, (incidentOVER) => {
               if (incidentOVER) {
                 clearInterval(getData);
                 $('.show-safe').css('display', 'flex')
                 $('.show-safe').css('justify-content', 'center')
               }
             })
-          }, 5000)
+          }, 10000)
           getData;
         }
         GetLocation();

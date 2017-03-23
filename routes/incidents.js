@@ -23,14 +23,13 @@ router.get('/:id/:key', (req, res) => {
 })
 
 
-router.get('/endincident/:id', (req, res) => {
-  var incidentID = req.params.id
-
+router.get('/:thing/', (req, res) => {
+  var incidentID = req.params.thing
+console.log(incidentID)
   knex('incident').where('id', incidentID).select('end_timestamp')
     .then(endTime => {
-      res.send(endTime[0]["end_timestamp"])
+      res.send(endTime[0].end_timestamp)
     })
-    .catch(res.sendStatus(404))
 })
 router.post('/', stormpath.getUser, (req, res) => {
   var filler = 'test'
