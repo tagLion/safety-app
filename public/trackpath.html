@@ -80,7 +80,7 @@
                   flightPath.setMap(map);
               }
             })
-          $.get(`/incidents/endincident/${incidentID}`, (incidentOVER) => {
+          $.get(`/incidents/${incidentID}`, (incidentOVER) => {
               if (incidentOVER) {
                 clearInterval(getData);
                 $('.show-safe').css('display', 'flex')
