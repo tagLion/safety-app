@@ -31,21 +31,17 @@
       function initialize() {
         var initSet = {};
         var map;
-
-<<<<<<< HEAD
+        
         $.get(`/incidents/${incidentID}/${keyid}`, (firstMark) => {
           console.log(parseFloat(firstMark[0]["LAT"]));
           console.log(parseFloat(firstMark[0]["LONG"]));
-=======
-        $.get(`https://getmesafe.herokuapp.com/incidents/${incidentID}`, (firstMark) => {
 
             var personID = firstMark[0]["user_id"]
-            
+
             $.get(`https://getmesafe.herokuapp.com/users/primary/${personID}`, (name) => {
               console.log(name[0]["firstname"])
               $('.track-name').insert(name[0]["firstname"])
             })
->>>>>>> trackstyle
 
             initSet = {lat:parseFloat(firstMark[0]["LAT"]) , lng:parseFloat(firstMark[0]["LONG"])}
 
