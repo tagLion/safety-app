@@ -20,10 +20,8 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6l6xQSaRk1QLgZB4dBVAPwuLSl6Z1ebQ"></script>
     <script>
 
-      var incidentID = parseInt(decodeURIComponent(window.location.search).split("=")[1])
-      console.log(incidentID)
-      var keyid = decodeURIComponent(window.location.search).split("=")[2]
-      console.log(keyid)
+      var incidentID = decodeURIComponent(window.location.search).split("=")[1]
+
       var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
       var labelIndex = 0;
       var username;
@@ -32,20 +30,14 @@
         var initSet = {};
         var map;
 
-<<<<<<< HEAD
-        $.get(`/incidents/${incidentID}/${keyid}`, (firstMark) => {
-          console.log(parseFloat(firstMark[0]["LAT"]));
-          console.log(parseFloat(firstMark[0]["LONG"]));
-=======
         $.get(`https://getmesafe.herokuapp.com/incidents/${incidentID}`, (firstMark) => {
 
             var personID = firstMark[0]["user_id"]
-            
+
             $.get(`https://getmesafe.herokuapp.com/users/primary/${personID}`, (name) => {
               console.log(name[0]["firstname"])
-              $('.track-name').insert(name[0]["firstname"])
+              $('.track-name').val(name[0]["firstname"])
             })
->>>>>>> trackstyle
 
             initSet = {lat:parseFloat(firstMark[0]["LAT"]) , lng:parseFloat(firstMark[0]["LONG"])}
 
@@ -62,7 +54,7 @@
 
         var GetLocation = function() {
           var getData = setInterval(function() {
-            $.get(`/incidents/${incidentID}/${keyid}`, (data) => {
+            $.get(`https://getmesafe.herokuapp.com/incidents/${incidentID}`, (data) => {
 
 
             addMarker({lat:parseFloat(data[0]["LAT"]) , lng:parseFloat(data[0]["LONG"])}, map)
@@ -85,14 +77,14 @@
                   flightPath.setMap(map);
               }
             })
-          $.get(`/incidents/${incidentID}`, (incidentOVER) => {
+          $.get(`https://getmesafe.herokuapp.com/incidents/endincident/${incidentID}`, (incidentOVER) => {
               if (incidentOVER) {
                 clearInterval(getData);
                 $('.show-safe').css('display', 'flex')
                 $('.show-safe').css('justify-content', 'center')
               }
             })
-          }, 10000)
+          }, 5000)
           getData;
         }
         GetLocation();
