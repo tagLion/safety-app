@@ -62,7 +62,7 @@ nextUri: 'http://getmesafe.herokuapp.com/'
 logout: {
       enabled: true,
       uri: '/logout',
-      nextUri: 'http://getmesafe.herokuapp.com/idSiteResult'
+      nextUri: 'http://getmesafe.herokuapp.com/'
     }
 }
 }));
