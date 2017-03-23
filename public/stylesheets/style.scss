@@ -46,6 +46,7 @@ nav{
 	height: $nav-height;
 	display: flex;
 	align-items: flex-start;
+	margin-bottom: 50px;
 	ul{
 		display: flex;
 		justify-content: space-between;
@@ -137,7 +138,7 @@ button{
 }
 
 .edit-profile-page-main{
-	margin-left: 20px;
+	width: 100vw;
 	margin-bottom: 100px;
 }
 
@@ -170,10 +171,15 @@ button{
 }
 
 .edit-profile-page-emergency-contact-container{
-	margin-bottom: calc(30px + 10vh);
+	margin-bottom: 50px;
 	background-color: lighten($background-grey, 5);
 	border-top: 2px solid black;
 	border-bottom: 2px solid black;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100vw;
 }
 
 .emergency-contact-heading{
@@ -212,7 +218,7 @@ button{
 	align-items: center;
 }
 .new-econtact-button{
-	width: 50vw;
+	width: 98vw;
 	height: calc(20px + 5vh);
 	background-color: $safe-green;
 	@extend %white-text-black-shadow;
@@ -401,11 +407,59 @@ button{
 
 
 //main.html
-.adp{
-	font-size: calc(20px + 3vw);
-	color: red;
-	background-color: yellow;
+%main-page-button{
+	height: calc(20px + 5vh);
+	@extend %white-text-black-shadow;
+	font-size: calc(12px + 3vw);
 }
 
+#map{
+	height: 40vh;
+	width: 100vw;
+	background-color: grey;
+}
 
+.abort-safe-button-container{
+	display: flex;
+	justify-content: space-between;
+	button{
+		@extend %main-page-button;
+	}
+	#abort-button{
+		background-color: $emergency-red;
+	}
+	#safe-button{
+		background-color: $safe-green;
+	}
+}
+.next-prev-button-container{
+	display: flex;
+	justify-content: space-between;
+	button{
+		@extend %main-page-button;
+		background-color: $accent-blue;
+	}
+}
+.main-page-heading-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: calc(14px + 2vw);
+	margin-bottom: 30px;
+	margin-top: 30px;
+}
 
+.adp{
+	font-size: calc(16px + 2vw);
+}
+
+.warnbox-content{
+	display:none;
+}
+.warnbox-c1{
+	display:none;
+}
+.warnbox-c2{
+	display:none;
+}
