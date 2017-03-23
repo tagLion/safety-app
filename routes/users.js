@@ -33,9 +33,9 @@ router.get('/primary', stormpath.groupsRequired('admin'), (req, res) => {
     })
 })
 
-router.get('/primary/:id', stormpath.groupsRequired('admin'), (req, res) => {
+router.get('/primary/:id', (req, res) => {
   var userID = req.params.id
-  knex('user').where('id', userID)
+  knex.select('firstname').from('user').where('id', userID)
     .then(oneUser => {
       res.send(oneUser)
     })

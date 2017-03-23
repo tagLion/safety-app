@@ -29,8 +29,15 @@
       function initialize() {
         var initSet = {};
         var map;
+<<<<<<< HEAD
 
         $.get(`https://getmesafe.herokuapp.com/incidents/${incidentID}`, (firstMark) => {
+=======
+        
+        $.get(`/incidents/${incidentID}/${keyid}`, (firstMark) => {
+          console.log(parseFloat(firstMark[0]["LAT"]));
+          console.log(parseFloat(firstMark[0]["LONG"]));
+>>>>>>> 434a2e66b7a27de38219c9ef521987795307ecfb
 
             var personID = firstMark[0]["user_id"]
 
