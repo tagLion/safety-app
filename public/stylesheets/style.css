@@ -1,5 +1,5 @@
 @import url("reset.css");
-/* read this about this box-sizing thingy 
+/* read this about this box-sizing thingy
 https://css-tricks.com/box-sizing/*/
 .login-button, .logout-button, .about-button, .edit-profile-button, .profile-form-container h1, .edit-contact-button a, .new-econtact-button, .edit-emergency-contact-form-container input, .edit-emergency-contact-form-container input::-webkit-input-placeholder, .emergency-contact-submit-button, .add-econtact-page-add-econtact-form-container input, .add-econtact-page-add-econtact-form-container input::-webkit-input-placeholder, .add-econtact-page-submit-button, .addphone-form-container input, .addphone-form-container input::-webkit-input-placeholder, .addphone-submit-button, .abort-safe-button-container button, .next-prev-button-container button {
   color: white;
@@ -206,6 +206,7 @@ button {
 
 .add-econtact-page-add-econtact-form-container-container {
   display: flex;
+  min-height: 50%;
   flex-direction: column;
   justify-content: center;
   align-items: center; }
