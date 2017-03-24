@@ -5,7 +5,12 @@ $.get('users/myid')
    num = data[0].id
 })
 
-
+$('.add-econtact-page-add-econtact-form-container').focusin(function(e){
+  $('.add-econtact-page-submit-button-container').hide()
+})
+$('.add-econtact-page-add-econtact-form-container').focusout(function(e){
+  $('.add-econtact-page-submit-button-container').show()
+})
 
 $('#send').click(function(e){
 
@@ -19,7 +24,7 @@ $('#send').click(function(e){
       if (!validateEmail(email)) {
         alert("Not a valid e-mail address");
       } else {
-      alert("eContact added!") 
+      alert("eContact added!")
       e.preventDefault()
       var econtobj = {
         firstname: $('#fn').val(),
