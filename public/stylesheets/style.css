@@ -246,7 +246,8 @@ button {
   margin-bottom: 3vh;
   height: calc(30px + 3vh);
   box-shadow: 0 0 7px 0px black;
-  background-color: #226666; }
+  background-color: #226666;
+z-index: -1}
 
 .addphone-form-container-container {
   display: flex;
