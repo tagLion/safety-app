@@ -207,11 +207,10 @@ button {
 .add-econtact-page-add-econtact-form-container-container {
   display: flex;
   min-height: 50%;
+  z-index: 5;
   flex-direction: column;
   justify-content: center;
   align-items: center; }
-  .add-econtact-page-add-econtact-form-container-container form{
-    min-height: 100%}
 
 .add-emergency-contact-heading {
   font-size: calc(20px + 3vw);
@@ -238,7 +237,8 @@ button {
 
 .add-econtact-page-submit-button-container {
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  z-index: -1}
 
 .add-econtact-page-submit-button {
   font-size: calc(14px + 1vw);
