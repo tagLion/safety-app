@@ -210,6 +210,8 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center; }
+  .add-econtact-page-add-econtact-form-container-container form{
+    min-height: 100%}
 
 .add-emergency-contact-heading {
   font-size: calc(20px + 3vw);
