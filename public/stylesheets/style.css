@@ -207,7 +207,6 @@ button {
 .add-econtact-page-add-econtact-form-container-container {
   display: flex;
   min-height: 50%;
-  z-index: 5;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -240,8 +239,7 @@ margin-bottom: 0}
 
 .add-econtact-page-submit-button-container {
   display: flex;
-  justify-content: center;
-  z-index: -1}
+  justify-content: center;}
 
 .add-econtact-page-submit-button {
   font-size: calc(14px + 1vw);
@@ -249,8 +247,7 @@ margin-bottom: 0}
   margin-bottom: 3vh;
   height: calc(30px + 3vh);
   box-shadow: 0 0 7px 0px black;
-  background-color: #226666;
-z-index: -1}
+  background-color: #226666;}
 
 .addphone-form-container-container {
   display: flex;
