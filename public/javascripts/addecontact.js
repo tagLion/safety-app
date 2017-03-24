@@ -5,12 +5,12 @@ $.get('users/myid')
    num = data[0].id
 })
 
-$('.add-econtact-page-add-econtact-form-container').focusin(function(e){
-  $('.add-econtact-page-submit-button-container').hide()
-})
-$('.add-econtact-page-add-econtact-form-container').focusout(function(e){
-  $('.add-econtact-page-submit-button-container').show()
-})
+// $('.add-econtact-page-add-econtact-form-container').focusin(function(e){
+//   $('.add-econtact-page-submit-button-container').hide()
+// })
+// $('.add-econtact-page-add-econtact-form-container').focusout(function(e){
+//   $('.add-econtact-page-submit-button-container').show()
+// })
 
 $('#send').click(function(e){
 
