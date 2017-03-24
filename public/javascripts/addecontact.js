@@ -17,9 +17,16 @@ console.log('test')
     function validate() {
       var email = $("#email").val();
       if (!validateEmail(email)) {
-        alert("Not a valid e-mail address");
+
+  $("#email").css("border-color", "red")
+        $("#email").val('');
+        $("#email").attr('placeholder', 'Please Enter a Valid Email');
+
+
+
+
+
       } else {
-      alert("eContact added")
       e.preventDefault()
       var econtobj = {
         firstname: $('#fn').val(),
