@@ -221,7 +221,8 @@ button {
   display: flex;
   flex-direction: column;
   box-shadow: 0 0 15px 0px black;
-  background-color: #c5c5c5; }
+  background-color: #c5c5c5;
+min-height: 100%;}
   .add-econtact-page-add-econtact-form-container input {
     height: calc(30px + 2vh);
     margin-top: 3vh;
