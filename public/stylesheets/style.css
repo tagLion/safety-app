@@ -210,7 +210,8 @@ button {
   z-index: 5;
   flex-direction: column;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+margin-bottom: 0}
 
 .add-emergency-contact-heading {
   font-size: calc(20px + 3vw);
@@ -222,7 +223,8 @@ button {
   flex-direction: column;
   box-shadow: 0 0 15px 0px black;
   background-color: #c5c5c5;
-min-height: 100%;}
+min-height: 100%;
+margin-bottom: 0}
   .add-econtact-page-add-econtact-form-container input {
     height: calc(30px + 2vh);
     margin-top: 3vh;
