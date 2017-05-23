@@ -328,9 +328,9 @@ margin-bottom: 0}
 
 #map {
   height: 40vh;
-  width: 100vw;
+  width: 80vw;
   background-color: grey;
-  margin-top: 50px; }
+  margin-top: 20px; }
 
 .abort-safe-button-container {
   display: flex;
