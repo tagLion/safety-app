@@ -366,5 +366,7 @@ margin-bottom: 0}
 
 .warnbox-c2 {
   display: none; }
-
+  #bottom-panel {
+  	overflow-y: scroll;
+  }
 /*# sourceMappingURL=style.css.map */

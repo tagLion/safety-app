@@ -1,10 +1,10 @@
 @import url("reset.css");
-/* read this about this box-sizing thingy 
+/* read this about this box-sizing thingy
 https://css-tricks.com/box-sizing/*/
 
 
 $nav-height: 10vh;
-	
+
 $login-button-font-size: calc(20px + 1vw);
 
 //color palette:
@@ -122,7 +122,7 @@ button{
 	align-items: center;
 	h1{
 		font-size: calc(20px + 1vw);
-		@extend %white-text-black-shadow;	
+		@extend %white-text-black-shadow;
 	}
 }
 .user-form-container{
@@ -467,4 +467,7 @@ button{
 }
 .warnbox-c2{
 	display:none;
+}
+#bottom-panel {
+	overflow-y: scroll;
 }
