@@ -328,7 +328,8 @@ margin-bottom: 0}
 
 #map {
   height: 40vh;
-  width: 80vw;
+  width: 98%;
+  text-align: center;
   background-color: grey;
   margin-top: 20px; }
 
@@ -366,7 +367,5 @@ margin-bottom: 0}
 
 .warnbox-c2 {
   display: none; }
-  #bottom-panel {
-  	overflow-y: scroll;
-  }
+
 /*# sourceMappingURL=style.css.map */
