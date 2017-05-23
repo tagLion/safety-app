@@ -3,31 +3,44 @@
   <head>
     <meta charset="utf-8">
     <title>GetMeSafe Main Page</title>
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.js"
-      ></script>
+        <link rel="stylesheet" type="text/css" href="./stylesheets/bootstrap/css/bootstrap-theme.css">
+        <link rel="stylesheet" type="text/css" href="./stylesheets/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 
       <style>
-        #map {
-            height: 400px;
-            width: 100%;
-            background-color: grey;
-            }
+
       </style>
 
   </head>
 
   <body>
-    <button type="button" id="safe-button">I AM SAFE</button>
-    <button type="button" id="abort-button">ABORT</button>
-    <h1>Google Maps And Places Page</h1>
-    <h4>Our Best Guess</h4>
-    <button type="button" id="next-button">NEXT</button>
-    <button type="button" id="prev-button">PREVIOUS</button>
+    <div>
+
+
+
+    <div class = "abort-safe-button-container col-xs-12">
+      <button type="button" class = "col-xs-6" id="abort-button">CANCEL</button>
+      <button type="button" class = "col-xs-6" id="safe-button">I AM SAFE</button>
+    </div>
+
+
+
+    <div class = "col-xs-12 main-page-heading-container">
+      <h2>Directions to Nearest Open Location</h2>
+    </div>
+
+    <div class = "next-prev-button-container col-xs-12">
+      <button type="button" class = "col-xs-6" id="prev-button">PREVIOUS</button>
+      <button type="button" class = "col-xs-6" id="next-button">NEXT</button>
+    </div>
 
     <div id="map"></div>
 
-<div id = "bottom-panel"></div>
+
+<div id = "bottom-panel" class="col-xs-11"></div>
+</div>
     <script>
     var map
     var key
@@ -142,7 +155,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
     // initMap2()
   })
   }
-  $.post('/incidents/coordinates', {LAT: pos.lat, LONG: pos.lng, incident_id: incidentid, user_id: num} )
+  $.post('/incidents/coordinates/'+incidentid+'/'+key, {LAT: pos.lat, LONG: pos.lng, incident_id: incidentid, user_id: num} )
   .done(function(data){
     console.log('location POST')
     if ( start == undefined){
