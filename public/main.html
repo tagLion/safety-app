@@ -36,10 +36,10 @@
       <button type="button" class = "col-xs-6" id="next-button">NEXT</button>
     </div>
 
-    <div id="map"></div>
+    <div id="map" class="col-xs-12"></div>
 
 
-<div id = "bottom-panel" class="col-xs-11"></div>
+<div id = "bottom-panel" class="col-xs-12"></div>
 </div>
     <script>
     var map
@@ -345,7 +345,7 @@ calculateAndDisplayRoute(directionsService, directionsDisplay, myLocation, neare
             key = data[0].key
             console.log('incident posted')
               getPos()
-              int = setInterval(function(){getPos()}, 10000)
+              int = setInterval(function(){getPos()}, 20000)
 
         })
         })
