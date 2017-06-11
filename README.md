@@ -9,7 +9,7 @@ npm install
 createdb getmesafe
 knex migrate:latest
 
-# serve locally via  localhost:3000
+# serve locally via localhost:3000
 npm start
 ```
 ## Team Name
