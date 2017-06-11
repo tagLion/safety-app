@@ -1,9 +1,15 @@
-# Galvanize Group Project Proposal
-
-* 1 member from your team will need to fork this repo and update this README file with your proposal.
-* Make sure to preview your proposal in a markdown preview and [use valid markdown syntax](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
-  * Unformatted/unreadable proposals will be rejected
-
+# GetMeSafe
+> A site that redirects users to the nearest open and publicly accessible locations. Also sends emergency alerts with a map of user's location to emergency contacts. 
+## Build Setup
+``` bash
+# install dependencies
+npm install
+# setup local database
+createdb getmesafe
+knex migrate:latest
+# serve locally via port 3000
+npm start
+```
 ## Team Name
 tagLion
 
@@ -12,9 +18,6 @@ Anita Khedkar
 Matt Moyer
 Thomas Castleman
 Bill Boughton
-
-## Project/Application Name
-"GetMeSafe"
 
 ## Project Description
 Application to help people in distress find the nearest accessible public location.  Send info to contacts if in emergency.  App tracks their location every 15 seconds and stores in database and sends a text to emergency contacts every 5 minutes with latest update.
